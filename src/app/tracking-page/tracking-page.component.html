@@ -1,14 +1,14 @@
 <app-header></app-header>
 <main>
-    <app-hero-banner></app-hero-banner>
     <div class="tracking-area pt-95 pb-115">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-10">
                     <div class="tracking-id-info text-center">
                         <p>Enter Your Cargo Tracking, Door to Door Office <a href="#">Order Number.</a></p>
-                        <form action="#" class="tracking-id-form">
-                            <input type="text" placeholder="Tracking id">
+                        <form class="tracking-id-form" >
+                            <input type="text" id="tracking_id" placeholder="Tracking id">
+                            <!-- <input (keyup)="onKey($event)"> -->
                             <button class="btn red-btn">Tracking</button>
                         </form>
                         <div class="tracking-list">
@@ -21,7 +21,7 @@
                                         <p>Dispatch</p>
                                     </div>
                                 </li>
-                                <li class="active">
+                                <li>
                                     <div class="tracking-list-icon">
                                         <i class="flaticon-warehouse"></i>
                                     </div>
@@ -48,7 +48,7 @@
                             </ul>
                         </div>
                         <div class="tracking-help">
-                            <p>MULTIPLE TRACKING NUMBERS | <a href="#">NEED HELP?</a></p>
+                            <p>Unable to Track Your Shipment ? | <a href="#">NEED HELP?</a></p>
                         </div>
                     </div>
                 </div>

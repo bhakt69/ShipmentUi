@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-tracking-page',
@@ -7,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackingPageComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit(): void {
   }
