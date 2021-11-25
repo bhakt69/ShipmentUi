@@ -11,6 +11,7 @@ import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { HeroBannerComponent } from './hero-banner/hero-banner.component';
 import { BookingModalComponent } from './booking-modal/booking-modal.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
+import { FormGroup, FormControl, FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

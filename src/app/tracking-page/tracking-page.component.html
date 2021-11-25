@@ -6,14 +6,16 @@
                 <div class="col-xl-8 col-lg-10">
                     <div class="tracking-id-info text-center">
                         <p>Enter Your Cargo Tracking, Door to Door Office <a href="#">Order Number.</a></p>
-                        <form class="tracking-id-form" >
-                            <input type="text" id="tracking_id" placeholder="Tracking id">
-                            <!-- <input (keyup)="onKey($event)"> -->
+
+                        <form #f="ngForm" class="tracking-id-form" (ngSubmit)="onSubmit(f)">
+                            <input type="text" id="tracking_id" #first="ngModel" ngModel name="trackingId">
                             <button class="btn red-btn">Tracking</button>
                         </form>
-                        <div class="tracking-list">
+
+                        
+                        <div class="tracking-list" id="status-icon">
                             <ul>
-                                <li>
+                                <li [class.active]="isDispatched()">
                                     <div class="tracking-list-icon">
                                         <i class="flaticon-box"></i>
                                     </div>
@@ -21,7 +23,7 @@
                                         <p>Dispatch</p>
                                     </div>
                                 </li>
-                                <li>
+                                <li [class.active]="isDeparted()">
                                     <div class="tracking-list-icon">
                                         <i class="flaticon-warehouse"></i>
                                     </div>
@@ -29,7 +31,7 @@
                                         <p>departed country</p>
                                     </div>
                                 </li>
-                                <li>
+                                <li [class.active]="isDestined()">
                                     <div class="tracking-list-icon">
                                         <i class="flaticon-placeholder"></i>
                                     </div>
@@ -37,7 +39,7 @@
                                         <p>Destination</p>
                                     </div>
                                 </li>
-                                <li>
+                                <li [class.active]="isSuccessful()">
                                     <div class="tracking-list-icon">
                                         <i class="flaticon-audit"></i>
                                     </div>
