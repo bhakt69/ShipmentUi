@@ -12,6 +12,7 @@ export class TrackingPageComponent {
 
   onSubmit(f : NgForm){
     this.val = f.value.trackingId.length;
+    this.TrackingService.trackPackage();
   }
 
   isDispatched(){
