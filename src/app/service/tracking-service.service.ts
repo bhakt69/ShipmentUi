@@ -15,6 +15,6 @@ export class TrackingService {
   constructor(private http: HttpClient) { }
 
   public trackPackage(): Observable<Tracking[]> {
-    return this.http.get<Tracking[]>(this.usersUrl+'/tracking');
+    return this.http.get<Tracking[]>(this.usersUrl+'/user/all-users');
   }
 }

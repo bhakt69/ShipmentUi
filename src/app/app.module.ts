@@ -12,6 +12,8 @@ import { HeroBannerComponent } from './hero-banner/hero-banner.component';
 import { BookingModalComponent } from './booking-modal/booking-modal.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { FormGroup, FormControl, FormsModule} from '@angular/forms';
+import { TrackingService } from './service/tracking-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,15 +24,16 @@ import { FormGroup, FormControl, FormsModule} from '@angular/forms';
     TrackingPageComponent,
     HeroBannerComponent,
     BookingModalComponent,
-    BookingFormComponent
+    BookingFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [TrackingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

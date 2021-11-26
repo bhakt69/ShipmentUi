@@ -12,27 +12,26 @@ import { TrackingService } from '../service/tracking-service.service';
 export class TrackingPageComponent implements OnInit{
 
   val: number = 0;
-  public trackingDetails!: Tracking[];
+  public trackingDetails: Tracking[] = [];
 
   ngOnInit(){
   }
-  constructor(private trackingService: TrackingService){}
+  constructor(private trackingService: TrackingService){
+
+  }
 
   onSubmit(f : NgForm){
     this.trackingService.trackPackage().subscribe(
       (response: Tracking[]) => {
         this.trackingDetails = response;
-        this.val = 1;
+        console.log(response[0].lastName);
+        this.val = response[0].userid_pk;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
     );
   }
-
-  
-
-
 
 
   isDispatched(){
