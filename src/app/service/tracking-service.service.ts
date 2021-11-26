@@ -4,7 +4,7 @@ import { Tracking } from '../model/tracking';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class UserService {
+export class TrackingService {
 
   private usersUrl: string;
 

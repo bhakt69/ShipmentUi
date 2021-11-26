@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TrackingService } from '../service/tracking-service.service';
 
 @Component({
   selector: 'app-tracking-page',
@@ -12,7 +13,7 @@ export class TrackingPageComponent {
 
   onSubmit(f : NgForm){
     this.val = f.value.trackingId.length;
-    this.TrackingService.trackPackage();
+    // TrackingService.trackPackage();
   }
 
   isDispatched(){

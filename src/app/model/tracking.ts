@@ -1,5 +1,4 @@
 export class Tracking {
-    id: number;
-    status: string;
-
+    id: number | undefined;
+    status: string | undefined;
 }
