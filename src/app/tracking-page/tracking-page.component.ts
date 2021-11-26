@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Tracking } from '../model/tracking';
 import { TrackingService } from '../service/tracking-service.service';
 
 @Component({
@@ -7,14 +9,31 @@ import { TrackingService } from '../service/tracking-service.service';
   templateUrl: './tracking-page.component.html',
   styleUrls: ['./tracking-page.component.css']
 })
-export class TrackingPageComponent {
+export class TrackingPageComponent implements OnInit{
 
   val: number = 0;
+  public trackingDetails!: Tracking[];
+
+  ngOnInit(){
+  }
+  constructor(private trackingService: TrackingService){}
 
   onSubmit(f : NgForm){
-    this.val = f.value.trackingId.length;
-    // TrackingService.trackPackage();
+    this.trackingService.trackPackage().subscribe(
+      (response: Tracking[]) => {
+        this.trackingDetails = response;
+        this.val = 1;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
+
+  
+
+
+
 
   isDispatched(){
     if(this.val == 1){

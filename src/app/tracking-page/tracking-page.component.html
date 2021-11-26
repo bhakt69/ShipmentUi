@@ -49,6 +49,13 @@
                                 </li>
                             </ul>
                         </div>
+                        <div *ngFor="let tracking of trackingDetails">
+                            <div>
+                                {{ tracking.firstName }}
+                                {{ tracking.lastName }}
+                                {{ tracking.address }}
+                            </div>
+                        </div>
                         <div class="tracking-help">
                             <p>Unable to Track Your Shipment ? | <a href="#">NEED HELP?</a></p>
                         </div>

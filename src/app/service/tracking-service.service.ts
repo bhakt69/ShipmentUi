@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Tracking } from '../model/tracking';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root'
+})
 export class TrackingService {
 
-  private usersUrl: string;
+  private usersUrl = environment.usersUrl;
 
-  constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080';
-  }
+  constructor(private http: HttpClient) { }
 
   public trackPackage(): Observable<Tracking[]> {
     return this.http.get<Tracking[]>(this.usersUrl+'/tracking');
