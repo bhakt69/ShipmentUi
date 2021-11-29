@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +13,8 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
 import { FormGroup, FormControl, FormsModule} from '@angular/forms';
 import { TrackingService } from './service/tracking-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     HeroBannerComponent,
     BookingModalComponent,
     BookingFormComponent,
+    RegisterFormComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,

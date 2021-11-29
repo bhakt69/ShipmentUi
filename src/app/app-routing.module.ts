@@ -6,12 +6,16 @@ import { FooterComponent } from './footer/footer.component';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { AppComponent } from './app.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 const routes: Routes = [
   {path : '', component : HomePageComponent},
   {path : 'home', component : HomePageComponent},
   {path : 'tracking', component : TrackingPageComponent},
-  {path : 'booking', component : BookingFormComponent}
+  {path : 'booking', component : BookingFormComponent},
+  {path : 'register', component : RegisterFormComponent},
+  {path:'login',component:LoginFormComponent}
 ];
 
 @NgModule({
