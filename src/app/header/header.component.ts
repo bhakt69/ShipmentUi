@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   
   constructor() { }
+
+  public loginRegisterCheck(){
+    console.log('hello');
+  }
 }
