@@ -1,50 +1,82 @@
 <app-header></app-header>
 <main>
-    <section class="pricing-area pt-110 pb-90">
-        <div class="container" style="max-width: 1200px;">
-            <form #bookingForm="ngForm" (ngSubmit)="onBookingSubmit(bookingForm)" method="post">
-                <div >
-                <div class="fare-rate-tab-content">
-                    <div class="modal-shipping-title">
-                        <h2>Shipping <span>details</span></h2>
+  <section class="pricing-area pt-110 pb-90">
+    <div class="container" style="max-width: 1200px;">
+      <form #bookingForm="ngForm" (ngSubmit)="onBookingSubmit(bookingForm)" method="post">
+        <div>
+          <div class="fare-rate-tab-content">
+            <div class="modal-shipping-title">
+              <h2>Shipping <span>details</span></h2>
+            </div>
+            <div class="modal-shipping-info">
+              <ul>
+                <li class="d-flex">
+                  <div class="shipping-step-count">
+                    <h5>A</h5>
+                  </div>
+                  <div class="shipping-address-form">
+                    <div class="shipping-country-box form-group">
+                      <label for="from-country">from customer</label>
+                      <input name="fromUser" type="text" ngModel required="required" id="from-country"
+                        placeholder="From">
                     </div>
-                    <div class="modal-shipping-info">
-                    <ul>
-                        <li>
-                        <div class="shipping-step-count">
-                            <h5>A</h5>
-                        </div>
-                        <div class="shipping-address-form">
-                            <div class="shipping-country-box form-group">
-                            <label for="from-country">from customer</label>
-                            <input name="fromUser" type="text" ngModel required="required" id="from-country" placeholder="From">
-                            </div>
-                            <div class="shipping-address-box form-group">
-                            <label for="from-country-location">add parcel origin</label>
-                            <input name="fromLocation" type="text" ngModel required="required" id="from-country-location"
-                                placeholder="Select Your Origin">
-                            </div>
-                        </div>
-                        </li>
-                        <li>
-                        <div class="shipping-step-count">
-                            <h5>B</h5>
-                        </div>
-                        <div class="shipping-address-form">
-                            <div class="shipping-country-box form-group">
-                            <label for="to-country">TO Customer</label>
-                            <input name="toUser" type="text" ngModel required="required" id="to-country" placeholder="To">
-                            </div>
-                            <div class="shipping-address-box form-group">
-                            <label for="to-country-location">add parcel final destination</label>
-                            <input name="toLocation" type="text" ngModel required="required" id="to-country-location"
-                                placeholder="Select Your Destination">
-                            </div>
-                        </div>
-                        </li>
-                    </ul>
+                    <div class="single-shipping-details-box form-group">
+                      <label for="from-country-location">add parcel origin</label>
+                      <input name="fromLocation" type="text" ngModel required="required" id="from-country-location"
+                        placeholder="Select Your Origin">
                     </div>
-                    <!-- <div class="modal-shipping-more-list">
+                    <div class="single-shipping-details-box form-group">
+                      <label for="from-country-location">Origin City</label>
+                      <input name="fromCity" type="text" ngModel required="required" id="from-country-location"
+                        placeholder="Eg:- Indore">
+                    </div>
+                    <div class="single-shipping-details-box form-group">
+                      <label for="from-country-location">Origin Pincode</label>
+                      <input name="fromPincode" type="text" ngModel required="required" id="from-country-location"
+                        placeholder="Eg:- 452001">
+                    </div>
+                    <br>
+
+                  </div>
+                </li>
+                <li>
+                    <div class="shipping-address-form">
+                  <div class="single-shipping-details-box form-group">
+                    <label for="from-country">Origin Pincode</label>
+                    <input name="fromPincode" type="text" ngModel required="required" id="from-country-location"
+                      placeholder="Eg:- 452001">
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="shipping-step-count">
+                    <h5>B</h5>
+                  </div>
+                  <div class="shipping-address-form">
+                    <div class="shipping-country-box form-group">
+                      <label for="to-country">TO Customer</label>
+                      <input name="toUser" type="text" ngModel required="required" id="to-country" placeholder="To">
+                    </div>
+                    <div class="ingle-shipping-details-box form-group">
+                      <label for="to-country-location">add parcel final destination</label>
+                      <input name="toLocation" type="text" ngModel required="required" id="to-country-location"
+                        placeholder="Select Your Destination">
+                    </div>
+                    <div class="single-shipping-details-box form-group">
+                      <label for="from-country-location">Destination City</label>
+                      <input name="toCity" type="text" ngModel required="required" id="from-country-location"
+                        placeholder="Eg:- Indore">
+                    </div>
+                    <div class="single-shipping-details-box form-group">
+                      <label for="from-country-location">Destination Pincode</label>
+                      <input name="toPincode" type="text" ngModel required="required" id="from-country-location"
+                        placeholder="Eg:- 472001">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- <div class="modal-shipping-more-list">
                     <ul>
                         <li><a href="#"><i class="flaticon-credit-card"></i> Don't have an account? No problem Pay by credit
                             card or cash.</a></li>
@@ -52,76 +84,76 @@
                         <li><a href="#"><i class="flaticon-track"></i> Consult your packaging and delivery options</a></li>
                     </ul>
                     </div> -->
+          </div>
+        </div>
+        <div>
+          <div class="fare-rate-tab-content">
+            <div class="modal-shipping-details">
+              <div class="modal-shipping-title">
+                <h2>items <span>details</span></h2>
+              </div>
+              <div class="shipping-details-info">
+                <div class="single-shipping-details-box">
+                  <label for="packaging-size">packaging size</label>
+                  <select name="sizeSelect" ngModel class="custom-select" id="packaging-size">
+                    <option selected="">Standart Size ( 42” x 36” )</option>
+                    <option>Standart Size ( 82” x 86” )</option>
+                    <option>Standart Size ( 102” x 165” )</option>
+                    <option>Standart Size ( 110” x 205” )</option>
+                    <option>Standart Size ( 120” x 250” )</option>
+                  </select>
                 </div>
+                <div class="single-shipping-details-box shipping-qty">
+                  <label for="QTY-number">QTY</label>
+                  <input name="quantity" ngModel type="number" value="1" id="QTY-number" required="required">
                 </div>
-                <div >
-                <div class="fare-rate-tab-content">
-                    <div class="modal-shipping-details">
-                    <div class="modal-shipping-title">
-                        <h2>items <span>details</span></h2>
-                    </div>
-                    <div class="shipping-details-info">
-                        <div class="single-shipping-details-box">
-                        <label for="packaging-size">packaging size</label>
-                        <select name="sizeSelect" ngModel class="custom-select" id="packaging-size">
-                            <option selected="">Standart Size ( 42” x 36” )</option>
-                            <option>Standart Size ( 82” x 86” )</option>
-                            <option>Standart Size ( 102” x 165” )</option>
-                            <option>Standart Size ( 110” x 205” )</option>
-                            <option>Standart Size ( 120” x 250” )</option>
-                        </select>
-                        </div>
-                        <div class="single-shipping-details-box shipping-qty">
-                        <label for="QTY-number">QTY</label>
-                        <input name="quantity" ngModel type="number" value="1" id="QTY-number" required="required">
-                        </div>
-                        <div class="single-shipping-details-box shipping-weight">
-                        <label for="packaging-weight">TOTAL WEIGHT</label>
-                        <select ngModel name="weight" class="custom-select" id="packaging-weight">
-                            <option selected="">KG</option>
-                            <option>20KG</option>
-                            <option>30KG</option>
-                            <option>50KG</option>
-                            <option>80KG</option>
-                            <option>100KG</option>
-                        </select>
-                        </div>
-                        <div class="single-shipping-details-box shipping-transport">
-                        <label for="cargo-transport">cargo transport</label>
-                        <select name="size" ngModel class="custom-select" id="cargo-transport">
-                            <option selected="">IN</option>
-                            <option>1500in</option>
-                            <option>2000in</option>
-                            <option>2500in</option>
-                            <option>3000in</option>
-                            <option>3500in</option>
-                            <option>4000in</option>
-                        </select>
-                        </div>
-                        <div class="single-shipping-details-box shipping-product">
-                        <label for="product-category">product category</label>
-                        <select name="type" ngModel  class="custom-select" id="product-category">
-                            <option selected="">Glass Product</option>
-                            <option>Glass Product</option>
-                            <option>Glass Product</option>
-                            <option>Glass Product</option>
-                            <option>Glass Product</option>
-                        </select>
-                        </div>
-                    </div>
-                    <!-- <div class="custom-control custom-checkbox">
+                <div class="single-shipping-details-box shipping-weight">
+                  <label for="packaging-weight">TOTAL WEIGHT</label>
+                  <select ngModel name="weight" class="custom-select" id="packaging-weight">
+                    <option selected="">KG</option>
+                    <option>20KG</option>
+                    <option>30KG</option>
+                    <option>50KG</option>
+                    <option>80KG</option>
+                    <option>100KG</option>
+                  </select>
+                </div>
+                <div class="single-shipping-details-box shipping-transport">
+                  <label for="cargo-transport">cargo transport</label>
+                  <select name="size" ngModel class="custom-select" id="cargo-transport">
+                    <option selected="">IN</option>
+                    <option>1500in</option>
+                    <option>2000in</option>
+                    <option>2500in</option>
+                    <option>3000in</option>
+                    <option>3500in</option>
+                    <option>4000in</option>
+                  </select>
+                </div>
+                <div class="single-shipping-details-box shipping-product">
+                  <label for="product-category">product category</label>
+                  <select name="type" ngModel class="custom-select" id="product-category">
+                    <option selected="">Glass Product</option>
+                    <option>Glass Product</option>
+                    <option>Glass Product</option>
+                    <option>Glass Product</option>
+                    <option>Glass Product</option>
+                  </select>
+                </div>
+              </div>
+              <!-- <div class="custom-control custom-checkbox">
                         <input type="checkbox" required="required" class="custom-control-input" id="customControlInline">
                         <label class="custom-control-label" for="customControlInline">Logistics is generally the detailed
                         organization and implementation of a complex operation. In a general business sense, logistics is
                         the management of the flow of things between the point of origin and the point</label>
                     </div> -->
-                    </div>
-                    <br>
-                    <button type="submit" class="btn f-right nextBtn-2 btn-success"><span>$0.00</span> Booking</button>
-                </div>
-                </div>
-            </form>
+            </div>
+            <br>
+            <button type="submit" class="btn f-right nextBtn-2 btn-success"><span>$0.00</span> Booking</button>
+          </div>
         </div>
-    </section>    
+      </form>
+    </div>
+  </section>
 </main>
 <app-footer></app-footer>

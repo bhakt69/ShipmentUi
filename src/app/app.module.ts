@@ -15,6 +15,7 @@ import { TrackingService } from './service/tracking-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { TrackingListComponent } from './tracking-list/tracking-list.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
     BookingFormComponent,
     RegisterFormComponent,
     LoginFormComponent,
+    TrackingListComponent,
   ],
   imports: [
     BrowserModule,
