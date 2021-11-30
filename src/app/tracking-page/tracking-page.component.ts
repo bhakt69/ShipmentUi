@@ -24,8 +24,8 @@ export class TrackingPageComponent implements OnInit{
     this.trackingService.trackPackage().subscribe(
       (response: Tracking[]) => {
         this.trackingDetails = response;
-        console.log(response[0].lastName);
-        this.val = response[0].userid_pk;
+        console.log(response[0]);
+        this.val = response[0].trackingid;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

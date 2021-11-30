@@ -782,7 +782,7 @@ label {
 }
 .fare-rate-tab-content {
 	background: #0c0417;
-	padding: 60px 70px;
+	padding: 60px 70px 0px 70px;
 	padding-bottom: 80px;
 	overflow: hidden;
 }
