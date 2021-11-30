@@ -7,12 +7,11 @@
                     <div class="tracking-id-info text-center">
                         <p>Enter Your Cargo Tracking, Door to Door Office <a href="#">Order Number.</a></p>
 
-                        <form #f="ngForm" class="tracking-id-form" (ngSubmit)="onSubmit(f)">
+                        <form #trackignForm="ngForm" class="tracking-id-form" (ngSubmit)="onSubmit(trackignForm)">
                             <input type="text" id="tracking_id" #first="ngModel" ngModel name="trackingId">
                             <button class="btn red-btn">Tracking</button>
                         </form>
 
-                        
                         <div class="tracking-list" id="status-icon">
                             <ul>
                                 <li [class.active]="isDispatched()">
