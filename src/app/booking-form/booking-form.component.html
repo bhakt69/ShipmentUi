@@ -24,7 +24,7 @@
                     </div>
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Origin City</label>
-                      <input name="senderCity" type="text" ngModel required="required" id="from-country-location"
+                      <input name="senderCityName" type="text" ngModel required="required" id="from-country-location"
                         placeholder="Eg:- Indore">
                     </div>
                     <div class="single-shipping-details-box form-group">
@@ -40,12 +40,12 @@
                   <div class="shipping-address-form">
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Mobile Number</label>
-                      <input name="senderMobile" type="text" ngModel required="required" id="from-country-location"
+                      <input name="senderMobileNumber" type="text" ngModel required="required" id="from-country-location"
                         placeholder="Eg:- 9898989898">
                     </div>
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Email Id</label>
-                      <input name="senderEmail" type="email" ngModel required="required" id="from-country-location"
+                      <input name="senderEmailId" type="email" ngModel required="required" id="from-country-location"
                         placeholder="Eg:- abc@mail.com">
                     </div>
                   </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Destination City</label>
-                      <input name="receiverCity" type="text" ngModel required="required" id="from-country-location"
+                      <input name="receiverCityName" type="text" ngModel required="required" id="from-country-location"
                         placeholder="Eg:- Indore">
                     </div>
                     <div class="single-shipping-details-box form-group">
@@ -77,12 +77,12 @@
                   <div class="shipping-address-form">
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Mobile Number</label>
-                      <input name="receiverMobile" type="text" ngModel required="required" id="from-country-location"
+                      <input name="receiverMobileNumber" type="text" ngModel required="required" id="from-country-location"
                         placeholder="Eg:- 9898989898">
                     </div>
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Email Id</label>
-                      <input name="receiverEmail" type="email" ngModel required="required" id="from-country-location"
+                      <input name="receiverEmailId" type="email" ngModel required="required" id="from-country-location"
                         placeholder="Eg:- abc@mail.com">
                     </div>
                   </div>
@@ -108,9 +108,9 @@
               <div class="shipping-details-info">
                 <div class="single-shipping-details-box">
                   <label for="packaging-size">Package Type</label>
-                  <select name="sizeSelect" ngModel class="custom-select" id="packaging-size">
-                    <option>Business</option>
-                    <option>Personal</option>
+                  <select name="packageType" ngModel class="custom-select" id="packaging-size">
+                    <option value="BUSINESS">Business</option>
+                    <option value="PERSONAL">Personal</option>
                   </select>
                 </div>
                 <!-- <div class="single-shipping-details-box shipping-qty">
@@ -119,7 +119,7 @@
                 </div> -->
                 <div class="single-shipping-details-box shipping-weight">
                   <label for="packaging-weight">Category</label>
-                  <select ngModel name="weight" class="custom-select" id="packaging-weight">
+                  <select ngModel name="packageCategory" class="custom-select" id="packaging-weight">
                     <option value="ELECTRONICS">Electronics</option>
                     <option value="MEDICAL">Medical</option>
                     <option value="HOUSEHOLD">Household</option>
@@ -130,11 +130,11 @@
                 </div>
                 <div class="single-shipping-details-box shipping-transport">
                   <label for="cargo-transport">Priority</label>
-                  <select name="size" ngModel class="custom-select" id="cargo-transport">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                    <option>Urgent</option>
+                  <select name="packagePriority" ngModel class="custom-select" id="cargo-transport">
+                    <option value="LOW">Low</option>
+                    <option value="MEDIUM">Medium</option>
+                    <option value="HIGH">High</option>
+                    <option value="URGENT">Urgent</option>
                   </select>
                 </div>
                 <!-- <div class="single-shipping-details-box shipping-product">
@@ -156,6 +156,7 @@
                     </div> -->
             </div>
             <br>
+            <input type="text" value="1" style="display: none;" name="bookingId" ngModel>
             <button type="submit" class="btn f-right nextBtn-2 btn-success"><span>$0.00</span> Booking</button>
           </div>
         </div>
