@@ -12,18 +12,7 @@
                     <input type="text" name="firstName" placeholder="First Name" ngModel/>
                   </div>
                 </div>
-                <div *ngIf="userRegister.invalid && (userRegister.dirty || userRegister.touched)" class="alert">
-                  <div *ngIf="userRegister.errors?.['required']">
-                    Name is required.
-                  </div>
-                  <div *ngIf="userRegister.errors?.['minlength']">
-                    Name must be at least 4 characters long.
-                  </div>
-                  <div *ngIf="userRegister.errors?.['forbiddenName']">
-                    Name cannot be Bob.
-                  </div>
-
-                </div>
+                
                 <div class="col_half">
                   <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
                     <input type="text" name="lastName" placeholder="Last Name" required ngModel/>
