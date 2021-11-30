@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { User } from '../model/user';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-register-form',
@@ -8,14 +11,24 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ){}
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
   }
 
   onSubmit(userRegistration:NgForm){
-    console.log(userRegistration.value);
-
+    // console.log(userRegistration.value);
+    this.userService.registerUser(userRegistration.value).subscribe(
+      (response: any) => {
+        this.router.navigateByUrl('home');
+      },
+      (error: User) => {
+        "Error"
+      }
+    );
   }
 
 }
