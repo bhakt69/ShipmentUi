@@ -48,16 +48,22 @@
                                 </li>
                             </ul>
                         </div>
-                        <div *ngFor="let tracking of trackingDetails">
-                            <div class="card">
-                                <!-- {{ tracking.firstName }}
-                                {{ tracking.lastName }}
-                                {{ tracking.address }} -->
+                        <div *ngIf="!stringifiedData &&  stringifiedData != 0">
+                            <div *ngFor="let tracking of stringifiedData">
+                                <div class="card">
+                                    <b>Booking Id</b>: {{ tracking.bookingId }}<br>
+                                    Sender's Name: {{ tracking.senderName }}<br>
+                                    Sender's City: {{ tracking.senderCityName }}<br>
+                                    Receiver's Name:{{ tracking.receiverName }}<br>
+                                    Receiver's City: {{ tracking.receiverCityName }}<br>
+                                    Booking Date{{ tracking.date }}
+                                </div>
                             </div>
+                            <br>
                         </div>
-                        <div class="tracking-help">
-                            <p>Unable to Track Your Shipment ? | <a href="#">NEED HELP?</a></p>
-                        </div>
+                            <!-- <div class="tracking-help">
+                                <p>Unable to Track Your Shipment ? | <a href="#">NEED HELP?</a></p>
+                            </div> -->
                     </div>
                 </div>
             </div>
