@@ -48,10 +48,10 @@
                                 </li>
                             </ul>
                         </div>
-                        <div *ngIf="!stringifiedData &&  stringifiedData != 0">
+                        <div *ngIf="stringifiedData">
                             <div *ngFor="let tracking of stringifiedData">
                                 <div class="card">
-                                    <b>Booking Id</b>: {{ tracking.bookingId }}<br>
+                                    Booking Id: {{ tracking.bookingId }}<br>
                                     Sender's Name: {{ tracking.senderName }}<br>
                                     Sender's City: {{ tracking.senderCityName }}<br>
                                     Receiver's Name:{{ tracking.receiverName }}<br>

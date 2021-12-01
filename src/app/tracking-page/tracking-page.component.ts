@@ -23,7 +23,6 @@ export class TrackingPageComponent implements OnInit{
     this.trackingService.trackPackage(f.value['trackingId']).subscribe(
       (response: any) => {
         this.stringifiedData = Array.of(response);
-        // console.log(this.stringifiedData);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

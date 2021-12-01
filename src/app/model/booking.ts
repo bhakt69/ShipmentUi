@@ -2,7 +2,7 @@ export interface Booking {
     bookingId: number
     packageCategory: string
     packagePriority: string
-    packageType: string
+    // packageType: string
     receiverAddress: string
     receiverCityName: string
     receiverEmailId: string
@@ -15,4 +15,6 @@ export interface Booking {
     senderMobileNumber: string
     senderName: string
     senderPincode: string
+    priority: string
+    userInstruction: string
 }
