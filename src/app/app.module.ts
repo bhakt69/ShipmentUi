@@ -17,6 +17,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { TrackingListComponent } from './tracking-list/tracking-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { DataTablesModule } from "angular-datatables";
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { OrderListComponent } from './order-list/order-list.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule
   ],
   providers: [TrackingService],
   bootstrap: [AppComponent]

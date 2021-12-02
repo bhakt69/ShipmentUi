@@ -1,8 +1,6 @@
 // Avoid `console` errors in browsers that lack a console.
 // Tooltips Initialization
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
+
 
 // Steppers
 $(document).ready(function () {
