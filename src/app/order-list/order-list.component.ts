@@ -5,6 +5,13 @@ import { environment } from 'src/environments/environment';
 
 
 
+class DataTablesResponse {
+  data: any[];
+  // draw: number;
+  // recordsFiltered: number;
+  // recordsTotal: number;
+}
+
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
@@ -12,22 +19,45 @@ import { environment } from 'src/environments/environment';
 })
 
 export class OrderListComponent implements OnInit {
-
+  
   dtOptions: DataTables.Settings = {};
+  trackings: Tracking[];
+  private baseUrl = environment.usersUrl;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    const that = this;
+
     this.dtOptions = {
-      ajax: 'http://localhost:8080/booking/getAllBookingInfo',
-      columns: [{
-        title: 'ID',
-        data: 'id'
-      }, {
-        title: 'First name',
-        data: 'firstName'
-      }, {
-        title: 'Last name',
-        data: 'lastName'
-      }]
+      // pagingType: 'full_numbers',
+      pageLength: 10,
+      serverSide: true,
+      processing: true,
+      ajax: (dataTablesParameters: any, callback) => {
+        that.http
+          .get<DataTablesResponse>(
+            this.baseUrl+'/booking/getAllBookingInfo',
+            dataTablesParameters
+          ).subscribe(resp => {
+            // console.log(resp);
+            callback({
+              data: resp
+            });
+          });
+      },
+      columns: [
+        { data: 'bookingId' },
+        { data: 'senderName' }, 
+        // { data: 'senderAddress' },
+        { data: 'senderMobileNumber' },
+        { data: 'senderPinCode' },
+        { data: 'receiverName' },
+        // { data: 'receiverAddress' },
+        { data: 'receiverMobileNumber' },
+        { data: 'receiverPinCode' }]
     };
-  }    
+
+  }
+
 }

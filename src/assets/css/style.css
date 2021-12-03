@@ -917,6 +917,7 @@ label {
 	border-bottom: 1px solid #382f44;
 	margin-bottom: 45px;
 	position: relative;
+	text-align: -webkit-center;
 }
 .modal-shipping-title::before {
 	content: "";

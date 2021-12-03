@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { BookingService } from '../service/booking.service';
-
 @Component({
   selector: 'app-booking-form',
   templateUrl: './booking-form.component.html',

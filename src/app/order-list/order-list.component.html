@@ -1,20 +1,32 @@
 <app-header></app-header>
-<!-- <main>
+<main>
   <div class="tracking-area pt-95 pb-115">
     <div class="container">
       <table datatable [dtOptions]="dtOptions" class="row-border hover">
         <thead>
           <tr>
             <th>ID</th>
-            <th>First name</th>
-            <th>Last name</th>
+            <th>Booked BY</th>
+            <!-- <th>Booked From</th> -->
+            <th>Mobile</th>
+            <th>Pincode</th>
+            <th>Receiver Name</th>
+            <!-- <th>Receiver Address </th> -->
+            <th>Receiver Mobile</th>
+            <th>Receiver PinCode</th>
           </tr>
         </thead>
         <tbody *ngIf="trackings?.length != 0">
           <tr *ngFor="let track of trackings">
             <td>{{ track.bookingId }}</td>
             <td>{{ track.senderName }}</td>
+            <!-- <td>{{ track.senderAddress }}</td> -->
+            <td>{{ track.senderMobileNumber }}</td>
+            <td>{{ track.senderPinCode }}</td>
             <td>{{ track.receiverName }}</td>
+            <!-- <td>{{ track.receiverAddress }}</td> -->
+            <td>{{ track.receiverMobileNumber }}</td>
+            <td>{{ track.receiverPinCode }}</td>
           </tr>
         </tbody>
         <tbody *ngIf="trackings?.length == 0">
@@ -26,8 +38,8 @@
     </div>
   </div>
 </main>
--->
 
-<table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
+
+<!-- <table datatable [dtOptions]="dtOptions" class="row-border hover"></table> -->
 <app-footer></app-footer>
 

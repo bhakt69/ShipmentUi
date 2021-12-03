@@ -4,7 +4,7 @@
     <div class="container" style="max-width: 1200px;">
       <form #bookingForm="ngForm" (ngSubmit)="onBookingSubmit(bookingForm)" method="post">
         <div>
-          <div class="fare-rate-tab-content" style="padding: 60px 70px 0px 70px;">
+          <div class="fare-rate-tab-content text-center" style="padding: 60px 70px 0px 70px; text-align:center;">
             <div class="modal-shipping-title">
               <h2>Shipping <span>details</span></h2>
             </div>
@@ -137,17 +137,6 @@
                     <option value="URGENT">Urgent</option>
                   </select>
                 </div>
-                
-                <!-- <div class="single-shipping-details-box shipping-product">
-                  <label for="product-category">product category</label>
-                  <select name="type" ngModel class="custom-select" id="product-category">
-                    <option selected="">Glass Product</option>
-                    <option>Glass Product</option>
-                    <option>Glass Product</option>
-                    <option>Glass Product</option>
-                    <option>Glass Product</option>
-                  </select>
-                </div> -->
               </div>
               <!-- <div class="custom-control custom-checkbox">
                         <input type="checkbox" required="required" class="custom-control-input" id="customControlInline">
@@ -157,8 +146,7 @@
                     </div> -->
             </div>
             <br>
-            <input type="text" value="1" style="display: none;" name="bookingId" ngModel>
-            <button type="submit" class="btn f-right nextBtn-2 btn-success"><span>$0.00</span> Booking</button>
+            <button type="submit" class="btn f-right nextBtn-2 btn-success"><span>Confirm &nbsp;</span> Booking</button>
           </div>
         </div>
       </form>
