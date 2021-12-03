@@ -18,6 +18,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { TrackingListComponent } from './tracking-list/tracking-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { DataTablesModule } from "angular-datatables";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { DataTablesModule } from "angular-datatables";
     NgbModule,
     FormsModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [TrackingService],
   bootstrap: [AppComponent]
