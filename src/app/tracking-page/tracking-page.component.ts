@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { TrackingService } from '../service/tracking-service.service';
 
 @Component({
@@ -15,17 +16,18 @@ export class TrackingPageComponent implements OnInit{
 
   ngOnInit(){
   }
-  constructor(private trackingService: TrackingService){
-    
+  constructor(private trackingService: TrackingService,
+    private toastr: ToastrService){    
   }
 
   onSubmit(f : NgForm){
     this.trackingService.trackPackage(f.value['trackingId']).subscribe(
-      (response: any) => {
+      (response: any) => {   
         this.stringifiedData = Array.of(response);
+        // console.log(this.stringifiedData.);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.toastr.error(error.error.errorMessage, 'Error');
       }
     );
   }

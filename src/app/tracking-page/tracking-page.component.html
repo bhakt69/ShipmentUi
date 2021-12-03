@@ -19,7 +19,7 @@
                                         <i class="flaticon-box"></i>
                                     </div>
                                     <div class="tracking-list-content">
-                                        <p>Dispatch</p>
+                                        <p>Booked</p>
                                     </div>
                                 </li>
                                 <li [class.active]="isDeparted()">
@@ -27,7 +27,7 @@
                                         <i class="flaticon-warehouse"></i>
                                     </div>
                                     <div class="tracking-list-content">
-                                        <p>departed country</p>
+                                        <p>Dispatched</p>
                                     </div>
                                 </li>
                                 <li [class.active]="isDestined()">
@@ -35,7 +35,7 @@
                                         <i class="flaticon-placeholder"></i>
                                     </div>
                                     <div class="tracking-list-content">
-                                        <p>Destination</p>
+                                        <p>Out For Delivery</p>
                                     </div>
                                 </li>
                                 <li [class.active]="isSuccessful()">
@@ -43,27 +43,40 @@
                                         <i class="flaticon-audit"></i>
                                     </div>
                                     <div class="tracking-list-content">
-                                        <p>Successful</p>
+                                        <p>Delivered</p>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <div *ngIf="stringifiedData">
-                            <div *ngFor="let tracking of stringifiedData">
-                                <div class="card">
-                                    Booking Id: {{ tracking.bookingId }}<br>
-                                    Sender's Name: {{ tracking.senderName }}<br>
-                                    Sender's City: {{ tracking.senderCityName }}<br>
-                                    Receiver's Name:{{ tracking.receiverName }}<br>
-                                    Receiver's City: {{ tracking.receiverCityName }}<br>
-                                    Booking Date{{ tracking.date }}
+                        <div class="card" *ngIf="stringifiedData">
+                            <div class="title" >Tracking Details</div>                            
+                            <div class="pricing" *ngFor="let item of stringifiedData">
+                                <div class="row">
+                                    <div class="col-9"> <span>Booking Id</span> </div>
+                                    <div class="col-3"> <span>{{ item.bookingId }}</span> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"> <span>Booking Date</span> </div>
+                                    <div class="col-3"> <span>{{ item.bookingDate.slice(0,10) }}</span> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"> <span>Booked By</span> </div>
+                                    <div class="col-3"> <span>{{ item.senderName }}</span> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"> <span>Booked For</span> </div>
+                                    <div class="col-3"> <span>{{ item.receiverName }}</span> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"> <span>Originating City </span> </div>
+                                    <div class="col-3"> <span>{{ item.senderCityName }}</span> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9"> <span>Destination City</span> </div>
+                                    <div class="col-3"> <span>{{ item.receiverCityName }}</span> </div>
                                 </div>
                             </div>
-                            <br>
                         </div>
-                            <!-- <div class="tracking-help">
-                                <p>Unable to Track Your Shipment ? | <a href="#">NEED HELP?</a></p>
-                            </div> -->
                     </div>
                 </div>
             </div>

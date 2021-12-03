@@ -15,12 +15,12 @@
                     <div class="shipping-country-box form-group">
                       <label for="from-country">from customer</label>
                       <input name="senderName" type="text" ngModel required="required" id="from-country"
-                        placeholder="From">
+                        placeholder="Sender's Name">
                     </div>
                     <div class="shipping-country-box form-group">
                       <label for="from-country-location">add parcel origin</label>
                       <input name="senderAddress" type="text" ngModel required="required" id="from-country-location"
-                        placeholder="Select Your Origin">
+                        placeholder="Sender's Address">
                     </div>
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Origin City</label>
@@ -55,22 +55,22 @@
                     <div class="shipping-country-box form-group">
                       <label for="to-country">TO Customer</label>
                       <input name="receiverName" type="text" ngModel required="required" id="to-country"
-                        placeholder="To">
+                        placeholder="Receiver's Name">
                     </div>
                     <div class="shipping-country-box form-group">
                       <label for="to-country-location">add parcel final destination</label>
                       <input name="receiverAddress" type="text" ngModel required="required" id="to-country-location"
-                        placeholder="Select Your Destination">
+                        placeholder="Receiver's Address">
                     </div>
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Destination City</label>
                       <input name="receiverCityName" type="text" ngModel required="required" id="from-country-location"
-                        placeholder="Eg:- Indore">
+                        placeholder="Eg:- Gwalior">
                     </div>
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Destination Pincode</label>
                       <input name="receiverPinCode" type="number" ngModel required="required" id="from-country-location"
-                        placeholder="Eg:- 472001">
+                        placeholder="Eg:- 567001">
                     </div>
                   </div>
                 </li>
@@ -119,9 +119,9 @@
                     <option value="URGENT">Urgent</option>
                   </select>
                 </div>
-                <div class="single-shipping-details-box shipping-transport">
-                  <label for="cargo-transport">Priority</label>
-                  <textarea name="orderDetails" class="custom-select" cols="30" rows="2"></textarea>
+                <div class="shipping-country-box form-group">
+                  <label for="from-country">Custom package Instructiions</label>
+                  <input name="senderEmailId" type="email" ngModel required="required" id="from-country-location" placeholder="Custom Instructiions">
                 </div>
               </div>
             </div>
