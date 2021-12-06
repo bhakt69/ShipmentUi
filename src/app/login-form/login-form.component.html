@@ -7,24 +7,24 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <img [src]="imageSrc1" [alt]="imageAlt1" >
-                        <a href="#" class="signup-image-link">Create an account</a>
+                        <!-- <img [src]="imageSrc1" [alt]="imageAlt1" > -->
+                        <a href="/register" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
                         <h2 class="form-title">Sign up</h2>
-                            <form  role="form" #LoginForm="ngForm" (ngSubmit)="LoginForm.form.valid && onFormSubmit(LoginForm)" method="POST" class="register-form" id="login-form" >
+                            <form  role="form" #LoginForm="ngForm" (ngSubmit)="LoginForm.form.valid && onSubmit(LoginForm)" method="POST" class="register-form" id="login-form" >
                             <div class="form-group">
                                 <label for="email"><i aria-hidden="true" class="fa fa-user"></i></label>
-                                <input type="email" name="email" id="your_name" placeholder="Username" [(ngModel)]="model.email"  [ngClass]="{'invalid-data': email.invalid && LoginForm.submitted, 'valid-data':email.valid && LoginForm.submitted}"
-                                required name="email"  #email="ngModel">
+                                <input type="email" name="username" id="your_name" placeholder="Username" [(ngModel)]="model.email"  [ngClass]="{'invalid-data': email.invalid && LoginForm.submitted, 'valid-data':email.valid && LoginForm.submitted}"
+                                required #email="ngModel">
                                 <div *ngIf="email.invalid && LoginForm.submitted">
                                   <div style="color: red;">Please Enter User Name.</div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password"><i aria-hidden="true" class="fa fa-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" [(ngModel)]="model.password"  [ngClass]="{'invalid-data': password.invalid && LoginForm.submitted, 'valid-data':password.valid && LoginForm.submitted}"
+                                <input type="password" id="your_pass" placeholder="Password" [(ngModel)]="model.password"  [ngClass]="{'invalid-data': password.invalid && LoginForm.submitted, 'valid-data':password.valid && LoginForm.submitted}"
                                 required name="password"  #password="ngModel">
                                 <div *ngIf="password.invalid && LoginForm.submitted">
                                   <div style="color: red;">Please Enter Password</div>

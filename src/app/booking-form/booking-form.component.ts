@@ -18,23 +18,24 @@ export class BookingFormComponent implements OnInit {
    // @ViewChild('bookingForm') bookingForm: NgForm;
    // Booking:any;
 
-    model:Booking = { 
-      senderName : '',
-      senderAddress:'',
-      category:'',
-      priority:'',
-      type:'',
-      senderCityName:'',
-      senderEmailId:'',
-      senderMobileNumber:'',
-      userInstruction:'',
-      receiverAddress:'',
-      receiverCityName:'',
-      receiverEmailId:'',
-      receiverMobileNumber:'',
+    model:Booking = {
+      senderName: '',
+      senderAddress: '',
+      category: '',
+      priority: '',
+      type: '',
+      senderCityName: '',
+      senderEmailId: '',
+      senderMobileNumber: '',
+      userInstruction: '',
+      receiverAddress: '',
+      receiverCityName: '',
+      receiverEmailId: '',
+      receiverMobileNumber: '',
       receiverName: '',
-    // receiverPinCode:'',
-     // senderPinCode:'',
+      bookingId: 0,
+      receiverPinCode: 0,
+      senderPinCode: 0
     };
 
   ngOnInit() {   

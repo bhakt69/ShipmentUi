@@ -16,7 +16,7 @@ export class HeaderComponent {
   //   console.log('hello');
   // }
 
-  public isLoggedIn() {
+  public isLoggedIn(): boolean {
     if(localStorage.getItem("id_token")  ){
       return true;
     }
