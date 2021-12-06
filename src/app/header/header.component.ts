@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,25 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
-  public loginRegisterCheck(){
-    console.log('hello');
+  // public loginRegisterCheck(){
+  //   console.log('hello');
+  // }
+
+  public isLoggedIn() {
+    if(localStorage.getItem("id_token")  ){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  public logout() {
+    localStorage.removeItem("id_token");
+    this.router.navigateByUrl('home');
   }
 }

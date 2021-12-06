@@ -12,7 +12,7 @@ import { BookingModalComponent } from './booking-modal/booking-modal.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { FormGroup, FormControl, FormsModule} from '@angular/forms';
 import { TrackingService } from './service/tracking-service.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { TrackingListComponent } from './tracking-list/tracking-list.component';
@@ -20,6 +20,7 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { DataTablesModule } from "angular-datatables";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { ToastrModule } from 'ngx-toastr';
+import { AuthInterceptor } from './auth.interceptor';
 
 
 @NgModule({
@@ -47,7 +48,14 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [TrackingService],
+  providers: [
+    TrackingService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -51,22 +51,31 @@
                             <nav id="mobile-menu">
                                 <ul>
                                     <li class="active"><a routerLink="/home" routerLinkActive="active">Home</a></li>
-                                    <li><a routerLink="/booking" routerLinkActive="active">Create Booking</a></li>
+                                    <li ><a routerLink="/booking" routerLinkActive="active">Create Booking</a></li>
                                     <li><a routerLink="/tracking" routerLinkActive="active">Tracking</a></li>
                                     <li><a routerLink="/all-orders" routerLinkActive="active">All Orders</a></li>
                                 </ul>
                             </nav>
                         </div>
-                        <div class="header-btn">      
+                        <div class="header-btn" [style.display]="isLoggedIn() ? 'none' : 'block'">       
                             <button
                             style="margin: 50px; padding: 10px"
                             type="button"
                             class="btn btn-primary">
                             <a routerLink="/register" routerLinkActive="active">Login / Register</a>
                             
-                            </button>                     
-                            <!-- <app-booking-modal></app-booking-modal>                                 -->
+                            </button>
                         </div>
+                        
+                        <div class="header-btn" [style.display]="isLoggedIn() ? 'block' : 'none'">       
+                            <button
+                            style="margin: 50px; padding: 10px"
+                            type="button"
+                            class="btn btn-primary" (click)="logout();">
+                            <a >Logout</a>                            
+                            </button>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-12">

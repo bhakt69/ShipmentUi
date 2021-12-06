@@ -1,7 +1,7 @@
 export interface Tracking {
     "bookingId": number
     "date": string
-    "trackingId": string
+    "trackingId": number
     "statusComment": string
     "userInstruction": string
     "user": string

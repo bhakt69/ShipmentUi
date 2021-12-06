@@ -7,3 +7,8 @@ export interface User {
     address: string
     password: string
 }
+
+export interface User2 {
+    username: string
+    password: string
+}
