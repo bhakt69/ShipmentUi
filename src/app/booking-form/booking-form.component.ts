@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef,OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { BookingService } from '../service/booking.service';
 import { ToastrService } from 'ngx-toastr';
+import { Booking } from '../model/booking';
+
 
 @Component({
   selector: 'app-booking-form',
@@ -13,12 +15,34 @@ export class BookingFormComponent implements OnInit {
   constructor(private bookingService: BookingService,
     private toastr: ToastrService ) { }
 
-  ngOnInit(): void {
+   // @ViewChild('bookingForm') bookingForm: NgForm;
+   // Booking:any;
+
+    model:Booking = { 
+      senderName : '',
+      senderAddress:'',
+      category:'',
+      priority:'',
+      type:'',
+      senderCityName:'',
+      senderEmailId:'',
+      senderMobileNumber:'',
+      userInstruction:'',
+      receiverAddress:'',
+      receiverCityName:'',
+      receiverEmailId:'',
+      receiverMobileNumber:'',
+      receiverName: '',
+    // receiverPinCode:'',
+     // senderPinCode:'',
+    };
+
+  ngOnInit() {   
   }
 
-  onBookingSubmit(bookingForm: NgForm){
-    console.log(bookingForm.value);
-    this.bookingService.createBooking(bookingForm.value).subscribe(
+  onFormSubmit() {
+    console.log(this.model);  
+    this.bookingService.createBooking(this.model).subscribe(
       (response: any) => {
         alert('Success');
         this.toastr.success('Your booking id is'+response.message, 'Booking Created');
@@ -28,5 +52,5 @@ export class BookingFormComponent implements OnInit {
         this.toastr.error(error.message, 'Booking Failed');
       }
     );
-  }
+  } 
 }

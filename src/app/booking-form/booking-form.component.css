@@ -1,0 +1,15 @@
+.mycss{
+    display: block;
+    width: 260px;
+    padding: 10px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.mycss2{
+    color:#F54C0D;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+
+}
