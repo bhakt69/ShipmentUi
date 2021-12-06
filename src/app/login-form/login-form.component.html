@@ -1,22 +1,48 @@
 
+    <div class="main">
 
-<div class="form_wrapper">
-	<div class="form_container">
-	  <div class="title_container">
-		<h2>Login</h2>
-	  </div>
-	  <div class="row clearfix">
-		<div class="">
-		  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-					<div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-					  <input type="email" name="email" placeholder="Enter Email" ngModel/>
-					</div>
-			<div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-			  <input type="password" name="password" placeholder="Password" required ngModel/>
-			</div>
-			<input class="button" type="submit" value="Login" />
-		  </form>
-		</div>
-	  </div>
-	</div>
-  </div>
+       
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <img [src]="imageSrc1" [alt]="imageAlt1" >
+                        <a href="#" class="signup-image-link">Create an account</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign up</h2>
+                            <form  role="form" #LoginForm="ngForm" (ngSubmit)="LoginForm.form.valid && onFormSubmit(LoginForm)" method="POST" class="register-form" id="login-form" >
+                            <div class="form-group">
+                                <label for="email"><i aria-hidden="true" class="fa fa-user"></i></label>
+                                <input type="email" name="email" id="your_name" placeholder="Username" [(ngModel)]="model.email"  [ngClass]="{'invalid-data': email.invalid && LoginForm.submitted, 'valid-data':email.valid && LoginForm.submitted}"
+                                required name="email"  #email="ngModel">
+                                <div *ngIf="email.invalid && LoginForm.submitted">
+                                  <div style="color: red;">Please Enter User Name.</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password"><i aria-hidden="true" class="fa fa-lock"></i></label>
+                                <input type="password" name="your_pass" id="your_pass" placeholder="Password" [(ngModel)]="model.password"  [ngClass]="{'invalid-data': password.invalid && LoginForm.submitted, 'valid-data':password.valid && LoginForm.submitted}"
+                                required name="password"  #password="ngModel">
+                                <div *ngIf="password.invalid && LoginForm.submitted">
+                                  <div style="color: red;">Please Enter Password</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                           
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+

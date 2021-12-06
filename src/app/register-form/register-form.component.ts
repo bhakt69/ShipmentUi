@@ -11,17 +11,28 @@ import { UserService } from '../service/user.service';
 })
 export class RegisterFormComponent implements OnInit {
 
+  
+
   constructor(
     private userService: UserService,
     private router: Router
   ){}
 
-  ngOnInit(): void {    
-  }
+  
+model:User={
+firstName:'',
+lastName:'',
+contactNumber:'',
+email:'',
+address:'',
+password:'',
+};
+ngOnInit(){    
+}
 
-  onSubmit(userRegistration:NgForm){
-    // console.log(userRegistration.value);
-    this.userService.registerUser(userRegistration.value).subscribe(
+  onFormSubmit(){
+    console.log(this.model);
+    this.userService.registerUser(this.model).subscribe(
       (response: any) => {
         this.router.navigateByUrl('home');
       },

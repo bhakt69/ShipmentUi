@@ -1,42 +1,150 @@
-<div class="form_wrapper">
+
+<!-- <div class="form_wrapper">
   <div class="form_container">
     <div class="title_container">
       <h2>User Registration Form</h2>
     </div>
     <div class="row clearfix">
       <div class="">
-        <form #userRegister="ngForm" (ngSubmit)="onSubmit(userRegister)">
+          <form  role="form"#userRegister="ngForm" (ngSubmit)="userRegister.form.valid && onFormSubmit()" method="post">
             <div class="row clearfix">
                 <div class="col_half">
                   <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                    <input type="text" name="firstName" placeholder="First Name" ngModel/>
-                  </div>
+                    <input type="text" name="firstName" placeholder="First Name" [(ngModel)]="model.firstName"  [ngClass]="{'invalid-data': firstName.invalid && userRegister.submitted, 'valid-data':firstName.valid && userRegister.submitted}"
+                    required name="firstName"  #firstName="ngModel">
+                    <div *ngIf="firstName.invalid && userRegister.submitted">
+                      <div style="color: red;">Please Enter First Name.</div>
+                    </div>
+                </div>
+                  
                 </div>
                 
                 <div class="col_half">
                   <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                    <input type="text" name="lastName" placeholder="Last Name" required ngModel/>
-                  </div>
+                    <input type="text" name="lastName" placeholder="Last Name" [(ngModel)]="model.lastName"  [ngClass]="{'invalid-data': lastName.invalid && userRegister.submitted, 'valid-data':lastName.valid && userRegister.submitted}"
+                    required name="lastName" #lastName="ngModel">
+                    <div *ngIf="lastName.invalid && userRegister.submitted">
+                      <div style="color: red;">Please Enter Last Name.</div>
+                    </div>
                 </div>
               </div>
               <div class="input_field"> <span><i aria-hidden="true" class="fa fa-phone"></i></span>
-                <input type="text" name="contactNumber" placeholder="Phone Number" required ngModel/>
-              </div>
+                <input type="text" name="contactNumber" placeholder="Phone Number"  [(ngModel)]="model.contactNumber"  [ngClass]="{'invalid-data': contactNumber.invalid && userRegister.submitted, 'valid-data':contactNumber.valid && userRegister.submitted}"
+                required name="contactNumber" #contactNumber="ngModel">
+                <div *ngIf="contactNumber.invalid && userRegister.submitted">
+                  <div style="color: red;">Please Enter contact Number.</div>
+                </div>
+                </div>
           <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-            <input type="email" name="email" placeholder="Email" required ngModel/>
-          </div>
+            <input type="email" name="email" placeholder="Email" [(ngModel)]="model.email"  [ngClass]="{'invalid-data': email.invalid && userRegister.submitted, 'valid-data':email.valid && userRegister.submitted}"
+            required name="email" #email="ngModel" >
+            <div *ngIf="email.invalid && userRegister.submitted">
+              <div style="color: red;">Please Enter Email.</div>
+            </div>
+            </div>
+           
           <div class="input_field"> <span><i aria-hidden="true" class="fa fa-location-arrow"></i></span>
-            <input type="text" name="address" placeholder="Address" required ngModel/>
+            <input type="text" name="address" placeholder="Address" [(ngModel)]="model.address"  [ngClass]="{'invalid-data': address.invalid && userRegister.submitted, 'valid-data':address.valid && userRegister.submitted}"
+            required name="address" #address="ngModel">
+            <div *ngIf="address.invalid && userRegister.submitted">
+              <div style="color: red;">Please Enter Address.</div>
+            </div>
           </div>
           <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-            <input type="password" name="password" placeholder="Password" required ngModel/>
+            <input type="password" name="password" placeholder="Password" [(ngModel)]="model.password"  [ngClass]="{'invalid-data': password.invalid && userRegister.submitted, 'valid-data':password.valid && userRegister.submitted}"
+            required name="password" #password="ngModel">
+            <div *ngIf="password.invalid && userRegister.submitted">
+              <div style="color: red;">Please Enter Password.</div>
+            </div>
           </div>
-          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-            <input type="password" name="passwordconf" placeholder="Re-type Password" required ngModel/>
+          <!--<div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+            <input type="password" name="passwordconf" placeholder="Re-type Password" [(ngModel)]="model.passwordconf"  [ngClass]="{'invalid-data': passwordconf.invalid && userRegister.submitted, 'valid-data':passwordconf.valid && userRegister.submitted}"
+            required name="passwordconf" #passwordconf="ngModel">
+            <div *ngIf="passwordconf.invalid && userRegister.submitted">
+              <div style="color: red;">Please Enter Confirm Password.</div>
+            </div>
           </div>
+            </div>
           <input class="button" type="submit" value="Register" />
         </form>
       </div>
     </div>
   </div>
+</div> -->
+<div class="main">
+ <!-- Sign up form -->
+ <section class="signup">
+  <div class="container">
+      <div class="signup-content">
+          <div class="signup-form">
+              <h2 class="form-title">Sign up</h2>
+                <form  role="form"#userRegister="ngForm" (ngSubmit)="userRegister.form.valid && onFormSubmit()" method="POST" class="register-form" id="register-form">
+                  <div class="form-group">
+                      <label for="firstName"><i aria-hidden="true" class="fa fa-user"></i></label>
+                      <input type="text" name="firstName" id="name" placeholder="First Name"  [(ngModel)]="model.firstName"  [ngClass]="{'invalid-data': firstName.invalid && userRegister.submitted, 'valid-data':firstName.valid && userRegister.submitted}"
+                      required name="firstName"  #firstName="ngModel">
+                      <div *ngIf="firstName.invalid && userRegister.submitted">
+                        <div style="color:red;">Please Enter First Name.</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName"><i aria-hidden="true" class="fa fa-user"></i></label>
+                    <input type="text" name="lastName" id="name" placeholder="Enter Last Name"  [(ngModel)]="model.lastName"  [ngClass]="{'invalid-data': lastName.invalid && userRegister.submitted, 'valid-data':lastName.valid && userRegister.submitted}"
+                    required name="lastName"  #lastName="ngModel">
+                    <div *ngIf="lastName.invalid && userRegister.submitted">
+                      <div style="color: red;">Please Enter Last Name.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="contactNumber"><i aria-hidden="true" class="fa fa-phone"></i></label>
+                  <input type="text" name="contactNumber" id="name" placeholder="Enter Contact Number"  [(ngModel)]="model.contactNumber"  [ngClass]="{'invalid-data': contactNumber.invalid && userRegister.submitted, 'valid-data':contactNumber.valid && userRegister.submitted}"
+                  required name="contactNumber"  #contactNumber="ngModel">
+                  <div *ngIf="firstName.invalid && userRegister.submitted">
+                    <div style="color: red;">Please Enter Contact Number.</div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="address"><i aria-hidden="true" class="fa fa-location-arrow"></i></label>
+                <input type="text" name="address" id="name" placeholder="Enter Address"  [(ngModel)]="model.address"  [ngClass]="{'invalid-data': address.invalid && userRegister.submitted, 'valid-data':address.valid && userRegister.submitted}"
+                required name="address"  #address="ngModel">
+                <div *ngIf="address.invalid && userRegister.submitted">
+                  <div style="color: red;">Please Enter Address.</div>
+                </div>
+            </div>
+                  <div class="form-group">
+                      <label for="email"><i aria-hidden="true" class="fa fa-envelope"></i></label>
+                      <input type="email" name="email" id="email" placeholder="Enter Email"  [(ngModel)]="model.email"  [ngClass]="{'invalid-data': email.invalid && userRegister.submitted, 'valid-data':email.valid && userRegister.submitted}"
+                      required name="email"  #email="ngModel">
+                      <div *ngIf="email.invalid && userRegister.submitted">
+                        <div style="color: red;">Please Enter Email.</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="password"><i aria-hidden="true" class="fa fa-lock"></i></label>
+                      <input type="password" name="password" id="pass" placeholder="Enter Password"  [(ngModel)]="model.password"  [ngClass]="{'invalid-data': password.invalid && userRegister.submitted, 'valid-data':password.valid && userRegister.submitted}"
+                      required name="password"  #password="ngModel">
+                      <div *ngIf="password.invalid && userRegister.submitted">
+                        <div style="color: red;">Please Enter Password.</div>
+                      </div>
+                  </div>
+                 <!-- <div class="form-group">
+                      <label for="re-pass"><i aria-hidden="true" class="fa fa-lock"></i></label>
+                      <input type="password" name="passwordconf" id="re_pass" placeholder="Repeat your password"  [(ngModel)]="model.passwordconf"  [ngClass]="{'invalid-data': passwordconf.invalid && userRegister.submitted, 'valid-data':passwordconf.valid && userRegister.submitted}"
+                      required name="passwordconf"  #passwordconf="ngModel">
+                      <div *ngIf="passwordconf.invalid && userRegister.submitted">
+                        <div style="color: red;">Please Enter Confirm Password.</div>
+                      </div>
+                  </div>-->
+                  <div class="form-group form-button">
+                      <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                  </div>
+              </form>
+          </div>
+          <div class="signup-image">
+              <figure><img [src]="imageSrc" [alt]="imageAlt" ></figure>
+              <a href="#" class="signup-image-link">I am already member</a>
+          </div>
+      </div>
+  </div>
+</section>
 </div>
