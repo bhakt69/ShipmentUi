@@ -34,7 +34,6 @@ ngOnInit(){
 }
 
   onFormSubmit(){
-    console.log(this.model);
     this.userService.registerUser(this.model).subscribe(
       (response: any) => {
         this.toastr.success( 'Login Successful' ,'Success');

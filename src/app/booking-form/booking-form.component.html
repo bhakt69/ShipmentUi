@@ -2,7 +2,7 @@
 <main>
   <section class="pricing-area pt-110 pb-90">
     <div class="container" style="max-width: 1200px;">
-      <form  role="form" #f="ngForm" (ngSubmit)="f.form.valid && onFormSubmit()" method="post">
+      <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && onFormSubmit()" method="post">
         <div>
           <div class="fare-rate-tab-content text-center" style="padding: 60px 70px 0px 70px; text-align:center;">
             <div class="modal-shipping-title">
@@ -14,38 +14,41 @@
                   <div class="shipping-address-form">
                     <div class="shipping-country-box form-group">
                       <label for="from-country">from customer</label>
-                      <input name="senderName" type="text" id="from-country"
-                        placeholder="Sender's Name" [(ngModel)]="model.senderName"  [ngClass]="{'invalid-data': senderName.invalid && f.submitted, 'valid-data':senderName.valid && f.submitted}"
+                      <input name="senderName" type="text" id="from-country" placeholder="Sender's Name"
+                        [(ngModel)]="model.senderName"
+                        [ngClass]="{'invalid-data': senderName.invalid && f.submitted, 'valid-data':senderName.valid && f.submitted}"
                         required name="senderName" #senderName="ngModel">
-                        <div *ngIf="senderName.invalid && f.submitted">
-                          <div style="color: red;">Please Enter Sender Name.</div>
-                        </div>
+                      <div *ngIf="senderName.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Sender Name.</div>
+                      </div>
                     </div>
-                    
+
                     <div class="shipping-country-box form-group">
                       <label for="from-country-location">add parcel origin</label>
-                        <input type="text" placeholder="Enter Address"  id="from-country-location" [(ngModel)]="model.senderAddress"  [ngClass]="{'invalid-data': senderAddress.invalid && f.submitted, 'valid-data':senderAddress.valid && f.submitted}"
-              required name="senderAddress" #senderAddress="ngModel">
-                   
-                    <div *ngIf="senderAddress.invalid && f.submitted">
-                      <div style="color: red;">Please Enter Sender Address.</div>
+                      <input type="text" placeholder="Enter Address" id="from-country-location"
+                        [(ngModel)]="model.senderAddress"
+                        [ngClass]="{'invalid-data': senderAddress.invalid && f.submitted, 'valid-data':senderAddress.valid && f.submitted}"
+                        required name="senderAddress" #senderAddress="ngModel">
+
+                      <div *ngIf="senderAddress.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Sender Address.</div>
+                      </div>
                     </div>
-                  </div>
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Origin City</label>
-                      <input name="senderCityName" type="text" id="from-country-location"
-                        placeholder="Eg:- Indore" [(ngModel)]="model.senderCityName"  [ngClass]="{'invalid-data': senderCityName.invalid && f.submitted, 'valid-data':senderCityName.valid && f.submitted}"
+                      <input name="senderCityName" type="text" id="from-country-location" placeholder="Eg:- Indore"
+                        [(ngModel)]="model.senderCityName"
+                        [ngClass]="{'invalid-data': senderCityName.invalid && f.submitted, 'valid-data':senderCityName.valid && f.submitted}"
                         required name="senderCityName" #senderCityName="ngModel">
-                            
-                              <div *ngIf="senderCityName.invalid && f.submitted">
-                                <div style="color: red;">Please Enter Sender City Name.</div>
-                              </div>
-                            </div>
-                  
+
+                      <div *ngIf="senderCityName.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Sender City Name.</div>
+                      </div>
+                    </div>
+
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Origin Pincode</label>
-                      <input name="senderPinCode" type="number"   id="from-country-location"
-                        placeholder="Eg:- 452001" >
+                      <input name="senderPinCode" type="number" id="from-country-location" placeholder="Eg:- 452001">
                     </div>
                     <br>
                   </div>
@@ -54,102 +57,109 @@
                   <div class="shipping-address-form">
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Mobile Number</label>
-                      <input name="senderMobileNumber" type="text" 
-                        id="from-country-location" [(ngModel)]="model.senderMobileNumber"  [ngClass]="{'invalid-data': senderMobileNumber.invalid && f.submitted, 'valid-data':senderMobileNumber.valid && f.submitted}"
+                      <input name="senderMobileNumber" type="text" id="from-country-location"
+                        [(ngModel)]="model.senderMobileNumber"
+                        [ngClass]="{'invalid-data': senderMobileNumber.invalid && f.submitted, 'valid-data':senderMobileNumber.valid && f.submitted}"
                         required name="senderMobileNumber" #senderMobileNumber="ngModel">
-                            
-                              <div *ngIf="senderMobileNumber.invalid && f.submitted">
-                                <div style="color: red;">Please Enter Sender Mobile Number</div>
-                              </div>
-                            </div>
+
+                      <div *ngIf="senderMobileNumber.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Sender Mobile Number</div>
+                      </div>
+                    </div>
 
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Email Id</label>
                       <input name="senderEmailId" type="email" id="from-country-location"
-                        placeholder="Eg:- abc@mail.com" [(ngModel)]="model.senderEmailId"  [ngClass]="{'invalid-data': senderEmailId.invalid && f.submitted, 'valid-data':senderEmailId.valid && f.submitted}"
+                        placeholder="Eg:- abc@mail.com" [(ngModel)]="model.senderEmailId"
+                        [ngClass]="{'invalid-data': senderEmailId.invalid && f.submitted, 'valid-data':senderEmailId.valid && f.submitted}"
                         required name="senderEmailId" #senderEmailId="ngModel">
-                            
-                              <div *ngIf="senderEmailId.invalid && f.submitted">
-                                <div style="color: red;">Please Enter Sender Email.</div>
-                              </div>
-                            </div>
-                 
+
+                      <div *ngIf="senderEmailId.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Sender Email.</div>
+                      </div>
+                    </div>
+
                   </div>
                 </li>
                 <li>
                   <div class="shipping-address-form">
                     <div class="shipping-country-box form-group">
                       <label for="to-country">TO Customer</label>
-                      <input name="receiverName" type="text"  id="to-country"
-                        placeholder="Receiver's Name"  [(ngModel)]="model.receiverName"  [ngClass]="{'invalid-data': receiverName.invalid && f.submitted, 'valid-data':receiverName.valid && f.submitted}"
+                      <input name="receiverName" type="text" id="to-country" placeholder="Receiver's Name"
+                        [(ngModel)]="model.receiverName"
+                        [ngClass]="{'invalid-data': receiverName.invalid && f.submitted, 'valid-data':receiverName.valid && f.submitted}"
                         required name="receiverName" #receiverName="ngModel">
-                            
-                              <div *ngIf="receiverName.invalid && f.submitted">
-                                <div style="color: red;">Please Enter Receiver Name.</div>
-                              </div>
-                            </div>
-                  
+
+                      <div *ngIf="receiverName.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Receiver Name.</div>
+                      </div>
+                    </div>
+
                     <div class="shipping-country-box form-group">
                       <label for="to-country-location">add parcel final destination</label>
-                      <input name="receiverAddress" type="text"  id="to-country-location"
-                        placeholder="Receiver's Address"[(ngModel)]="model.receiverAddress"  [ngClass]="{'invalid-data': receiverAddress.invalid && f.submitted, 'valid-data':receiverAddress.valid && f.submitted}"
+                      <input name="receiverAddress" type="text" id="to-country-location"
+                        placeholder="Receiver's Address" [(ngModel)]="model.receiverAddress"
+                        [ngClass]="{'invalid-data': receiverAddress.invalid && f.submitted, 'valid-data':receiverAddress.valid && f.submitted}"
                         required name="receiverAddress" #receiverAddress="ngModel">
-                             
-                              <div *ngIf="receiverName.invalid && f.submitted">
-                                <div style="color: red;">Please Enter Receiver Address.</div>
-                              </div>
-                            </div>
-                  
+
+                      <div *ngIf="receiverName.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Receiver Address.</div>
+                      </div>
+                    </div>
+
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Destination City</label>
-                      <input name="receiverCityName" type="text"  id="from-country-location"
-                        placeholder="Eg:- Gwalior"[(ngModel)]="model.receiverCityName"  [ngClass]="{'invalid-data': receiverCityName.invalid && f.submitted, 'valid-data':receiverCityName.valid && f.submitted}"
+                      <input name="receiverCityName" type="text" id="from-country-location" placeholder="Eg:- Gwalior"
+                        [(ngModel)]="model.receiverCityName"
+                        [ngClass]="{'invalid-data': receiverCityName.invalid && f.submitted, 'valid-data':receiverCityName.valid && f.submitted}"
                         required name="receiverCityName" #receiverCityName="ngModel">
-                             
-                              <div *ngIf="receiverName.invalid && f.submitted">
-                                <div style="color: red;">Please Enter Receiver City Name.</div>
-                              </div>
-                            </div>
-                    
-                  
+
+                      <div *ngIf="receiverName.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Receiver City Name.</div>
+                      </div>
+                    </div>
+
+
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Destination Pincode</label>
-                      <input name="receiverPinCode" type="number"  id="from-country-location"
-                        placeholder="Eg:- 567001">
-                        </div>                 
-                 
+                      <input name="receiverPinCode" type="number" id="from-country-location" placeholder="Eg:- 567001">
+                    </div>
+
                   </div>
                 </li>
                 <li class="d-flex">
                   <div class="shipping-address-form">
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Mobile Number</label>
-                      <input name="receiverMobileNumber" type="text" 
-                        id="from-country-location" placeholder="Eg:- 9898989898" [(ngModel)]="model.receiverMobileNumber"  [ngClass]="{'invalid-data': receiverMobileNumber.invalid && f.submitted, 'valid-data':receiverCityName.valid && f.submitted}"
+                      <input name="receiverMobileNumber" type="text" id="from-country-location"
+                        placeholder="Eg:- 9898989898" [(ngModel)]="model.receiverMobileNumber"
+                        [ngClass]="{'invalid-data': receiverMobileNumber.invalid && f.submitted, 'valid-data':receiverCityName.valid && f.submitted}"
                         required name="receiverMobileNumber" #receiverMobileNumber="ngModel">
-                             
-                              <div *ngIf="receiverMobileNumber.invalid && f.submitted">
-                                <div style="color: red;">Please Enter Receiver Mobile Number.</div>
-                              </div>
-                            </div>
-                  
+
+                      <div *ngIf="receiverMobileNumber.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Receiver Mobile Number.</div>
+                      </div>
+                    </div>
+
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Email Id</label>
                       <input name="receiverEmailId" type="email" id="from-country-location"
-                        placeholder="Eg:- abc@mail.com" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" [(ngModel)]="model.receiverEmailId"  [ngClass]="{'invalid-data': receiverEmailId.invalid && f.submitted, 'valid-data':receiverEmailId.valid && f.submitted}"
+                        placeholder="Eg:- abc@mail.com" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+                        [(ngModel)]="model.receiverEmailId"
+                        [ngClass]="{'invalid-data': receiverEmailId.invalid && f.submitted, 'valid-data':receiverEmailId.valid && f.submitted}"
                         required name="receiverEmailId" #receiverEmailId="ngModel">
-                             
-                              <div *ngIf="receiverEmailId.invalid && f.submitted">
-                                <div style="color: red;">Please Enter Receiver Email Id.</div>
-                                <div class="text-danger" >Please provide a valid email address
-                                </div>
-                              </div>
-                            </div>
-                
+
+                      <div *ngIf="receiverEmailId.invalid && f.submitted">
+                        <div style="color: red;">Please Enter Receiver Email Id.</div>
+                        <div class="text-danger">Please provide a valid email address
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </li>
               </ul>
-            
+
             </div>
           </div>
         </div>
@@ -163,8 +173,10 @@
               <div class="shipping-details-info">
                 <div class="single-shipping-details-box shipping-weight">
                   <label for="packaging-weight">Category</label>
-                    <select class="custom-select" name="category" id="packaging-weight" [(ngModel)]="model.category" #category="ngModel" 
-                    [ngClass]="{'invalid-data': category.invalid && f.submitted, 'valid-data': category.valid && f.submitted}" required>
+                  <select class="custom-select" name="category" id="packaging-weight" [(ngModel)]="model.category"
+                    #category="ngModel"
+                    [ngClass]="{'invalid-data': category.invalid && f.submitted, 'valid-data': category.valid && f.submitted}"
+                    required>
                     <option [ngValue]="null">---Select---</option>
                     <option value="ELECTRONICS">Electronics</option>
                     <option value="MEDICAL">Medical</option>
@@ -177,12 +189,14 @@
                     <span style="color: red;">Please Select category.</span>
                   </div>
                 </div>
-               
-               
+
+
                 <div class="single-shipping-details-box shipping-transport">
                   <label for="cargo-transport">Priority</label>
-                    <select class="custom-select" name="priority" id="cargo-transport" [(ngModel)]="model.category" #priority="ngModel" 
-                    [ngClass]="{'invalid-data': priority.invalid && f.submitted, 'valid-data': priority.valid && f.submitted}" required>
+                  <select class="custom-select" name="priority" id="cargo-transport" [(ngModel)]="model.category"
+                    #priority="ngModel"
+                    [ngClass]="{'invalid-data': priority.invalid && f.submitted, 'valid-data': priority.valid && f.submitted}"
+                    required>
                     <option [ngValue]="null">---Select---</option>
                     <option value="LOW">Low</option>
                     <option value="MEDIUM">Medium</option>
@@ -192,28 +206,32 @@
                   <div *ngIf="category.invalid && f.submitted">
                     <span style="color: red;">Please Select Priority.</span>
                   </div>
-          </div>
+                </div>
 
                 <div class="shipping-country-box form-group">
                   <label class="mycss2" for="from-country">Custom package Instructiions</label>
-                  <input name="senderEmailId" type="email"  id="from-country-location"  placeholder="Custom Instructiions"class="mycss" [(ngModel)]="model.senderEmailId"  [ngClass]="{'invalid-data': senderEmailId.invalid && f.submitted, 'valid-data':senderEmailId.valid && f.submitted}"
-                  required name="senderEmailId" #senderEmailId="ngModel"  [class.is-invalid]="senderEmailId.invalid &amp;&amp; senderEmailId.touched">
+                  <input name="senderEmailId" type="email" id="from-country-location" placeholder="Custom Instructiions"
+                    class="mycss" [(ngModel)]="model.senderEmailId"
+                    [ngClass]="{'invalid-data': senderEmailId.invalid && f.submitted, 'valid-data':senderEmailId.valid && f.submitted}"
+                    required name="senderEmailId" #senderEmailId="ngModel"
+                    [class.is-invalid]="senderEmailId.invalid &amp;&amp; senderEmailId.touched">
                   <div *ngif="(senderEmailId.invalid &amp;&amp; senderEmailId.touched) || senderEmailId.dirty">
-                   
-                    <small class="text-danger" *ngif="senderEmailId.errors?.senderEmailId">Email address is invalid</small>
+
+                    <small class="text-danger" *ngif="senderEmailId.errors?.senderEmailId">Email address is
+                      invalid</small>
                   </div>
-                        <div *ngIf="senderEmailId.invalid && f.submitted">
-                          <div style="color: red;">Please Enter Sender Email Id.</div>
-                        </div>
-                   
-                      </div>
-              </div>
-               </div>
+                  <div *ngIf="senderEmailId.invalid && f.submitted">
+                    <div style="color: red;">Please Enter Sender Email Id.</div>
+                  </div>
+
+                </div>
               </div>
             </div>
-            <br>
-            <button type="submit" class="btn f-right nextBtn-2 btn-success"><span>Confirm &nbsp;</span> Booking</button>
-        
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn f-right nextBtn-2 btn-success"><span>Confirm &nbsp;</span> Booking</button>
+
       </form>
     </div>
   </section>

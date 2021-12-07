@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth.interceptor';
 import { AgGridModule } from 'ag-grid-angular';
+import { ListButtonComponent } from './list-button/list-button.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AgGridModule } from 'ag-grid-angular';
     LoginFormComponent,
     TrackingListComponent,
     OrderListComponent,
+    ListButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import { AgGridModule } from 'ag-grid-angular';
     DataTablesModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([ListButtonComponent]),
   ],
   providers: [
     TrackingService,

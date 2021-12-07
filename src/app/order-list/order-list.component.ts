@@ -5,6 +5,9 @@ import { environment } from 'src/environments/environment';
 import { BookingService } from '../service/booking.service';
 import { ToastrService } from 'ngx-toastr';
 import { DOCUMENT } from '@angular/common'; 
+import { ICellRendererAngularComp } from 'ag-grid-angular';
+import { ICellRendererParams } from 'ag-grid-community';
+import { ListButtonComponent } from '../list-button/list-button.component';
 
 
 
@@ -21,7 +24,10 @@ class DataTablesResponse {
   styleUrls: ['./order-list.component.css']
 })
 
-export class OrderListComponent implements OnInit {
+
+export class OrderListComponent implements OnInit{
+
+  frameworkComponents: any;
 
   ngOnInit(): void {
     
@@ -33,12 +39,17 @@ export class OrderListComponent implements OnInit {
   public columnDefs: any;
   public sortingOrder: any;
   public defaultColDef: any;
-  private bookingservice: BookingService;
-  private toastr: ToastrService;
+  
+  
   public paginationPageSize: any;
   public paginationNumberFormatter: any;
+  
+  constructor(
+    private http: HttpClient,
+    private bookingservice: BookingService,
+    private toastr: ToastrService
+    ) {
 
-  constructor(private http: HttpClient){
     this.columnDefs=[
       {
         headerName: "Name",
@@ -126,8 +137,40 @@ export class OrderListComponent implements OnInit {
         sortable: true,
         sortingOrder: ['asc', 'desc']
       },
-      
+      {
+        headerName: "Status",
+        width: 500,
+        editable: false,
+        cellRenderer: 'listbuttonComponent',
+        cellRendererParams: {
+          onClick: this.onStatusClick.bind(this),
+          label: 'Status'
+        }
+      },
+      {
+        headerName: "Edit",
+        width: 500,
+        editable: false,
+        cellRenderer: 'listbuttonComponent',
+        cellRendererParams: {
+          onClick: this.onEditClick.bind(this),
+          label: 'Edit'
+        }
+      },
+      {
+        headerName: "Delete",
+        width: 500,
+        editable: false,
+        cellRenderer: 'listbuttonComponent',
+        cellRendererParams: {
+          onClick: this.onDeleteClick.bind(this),
+          label: 'Delete'
+        }
+      },
     ]
+    this.frameworkComponents = {
+      listbuttonComponent: ListButtonComponent,
+    };
     this.sortingOrder = ["asc", "desc", "null"];
     this.paginationPageSize = 10;
     this.paginationNumberFormatter = function (params: { value: { toLocaleString: () => string; }; }) {
@@ -135,9 +178,6 @@ export class OrderListComponent implements OnInit {
     };
     this.defaultColDef = {
       editable: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      enableValue: true,
       sortable: true,
       resizable: true,
       filter: true,
@@ -145,22 +185,50 @@ export class OrderListComponent implements OnInit {
       minWidth: 75,
     };
   }
+  refresh(params: ICellRendererParams): boolean {
+    throw new Error('Method not implemented.');
+  }
+  agInit(params: ICellRendererParams): void {
+    throw new Error('Method not implemented.');
+  }
 
 
-    onGridReady(params: any){
-      this.gridApi = params.api;
-      this.gridColumnApi = params.columnApi;
+  onGridReady(params: any){
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
 
-      this.http.get("http://localhost:8080/booking/getAllBookingInfo")
-      .subscribe(response => {
-        params.api.setRowData(response);
-      });
-    }
+    this.http.get("http://localhost:8080/booking/getAllBookingInfo")
+    .subscribe(response => {
+      params.api.setRowData(response);
+    });
+  }
 
-    onPageSizeChanged() {
-      var pageNum = (<HTMLInputElement>document.getElementById('paginateCount')).value;
-      this.gridApi.paginationSetPageSize(Number(pageNum));
-    }
+  onPageSizeChanged() {
+    var pageNum = (<HTMLInputElement>document.getElementById('paginateCount')).value;
+    this.gridApi.paginationSetPageSize(Number(pageNum));
+  }
+
+  onStatusClick(e1: any) {
+    console.log(e1.rowData);
+    alert('status');
+  }
+
+  onEditClick(e1: any) {
+    alert('edit')
+  }
+
+  onDeleteClick(e1: any) {
+    // console.log(e1.rowData.bookingId);
+    this.bookingservice.deleteBooking(e1.rowData.bookingId).subscribe(
+      (response: any) => {
+        this.toastr.success('Booking Deleted', 'Success');
+      },
+      (error: any) => {
+        this.toastr.error('Delete Failed', 'Error');
+      }
+    );
+  }
+
 }
 
 
