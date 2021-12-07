@@ -48,7 +48,7 @@
 
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Origin Pincode</label>
-                      <input name="senderPinCode" type="number" id="from-country-location" placeholder="Eg:- 452001">
+                      <input name="senderPinCode" ngModel type="number" id="from-country-location" placeholder="Eg:- 452001">
                     </div>
                     <br>
                   </div>
@@ -122,7 +122,7 @@
 
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Destination Pincode</label>
-                      <input name="receiverPinCode" type="number" id="from-country-location" placeholder="Eg:- 567001">
+                      <input name="receiverPinCode" ngModel type="number" id="from-country-location" placeholder="Eg:- 567001">
                     </div>
 
                   </div>
@@ -144,10 +144,10 @@
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Email Id</label>
                       <input name="receiverEmailId" type="email" id="from-country-location"
-                        placeholder="Eg:- abc@mail.com" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
+                        placeholder="Eg:- abc@mail.com" [(ngModel)]="model.receiverEmailId"
                         [(ngModel)]="model.receiverEmailId"
                         [ngClass]="{'invalid-data': receiverEmailId.invalid && f.submitted, 'valid-data':receiverEmailId.valid && f.submitted}"
-                        required name="receiverEmailId" #receiverEmailId="ngModel">
+                        required #receiverEmailId="ngModel">
 
                       <div *ngIf="receiverEmailId.invalid && f.submitted">
                         <div style="color: red;">Please Enter Receiver Email Id.</div>
@@ -193,7 +193,7 @@
 
                 <div class="single-shipping-details-box shipping-transport">
                   <label for="cargo-transport">Priority</label>
-                  <select class="custom-select" name="priority" id="cargo-transport" [(ngModel)]="model.category"
+                  <select class="custom-select" name="priority" id="cargo-transport" [(ngModel)]="model.priority"
                     #priority="ngModel"
                     [ngClass]="{'invalid-data': priority.invalid && f.submitted, 'valid-data': priority.valid && f.submitted}"
                     required>
@@ -203,26 +203,15 @@
                     <option value="HIGH">High</option>
                     <option value="URGENT">Urgent</option>
                   </select>
-                  <div *ngIf="category.invalid && f.submitted">
+                  <div *ngIf="priority.invalid && f.submitted">
                     <span style="color: red;">Please Select Priority.</span>
                   </div>
                 </div>
 
                 <div class="shipping-country-box form-group">
                   <label class="mycss2" for="from-country">Custom package Instructiions</label>
-                  <input name="senderEmailId" type="email" id="from-country-location" placeholder="Custom Instructiions"
-                    class="mycss" [(ngModel)]="model.senderEmailId"
-                    [ngClass]="{'invalid-data': senderEmailId.invalid && f.submitted, 'valid-data':senderEmailId.valid && f.submitted}"
-                    required name="senderEmailId" #senderEmailId="ngModel"
-                    [class.is-invalid]="senderEmailId.invalid &amp;&amp; senderEmailId.touched">
-                  <div *ngif="(senderEmailId.invalid &amp;&amp; senderEmailId.touched) || senderEmailId.dirty">
+                  <input name="userInstruction" type="text" ngModel placeholder="Custom Instructiions" class="mycss">
 
-                    <small class="text-danger" *ngif="senderEmailId.errors?.senderEmailId">Email address is
-                      invalid</small>
-                  </div>
-                  <div *ngIf="senderEmailId.invalid && f.submitted">
-                    <div style="color: red;">Please Enter Sender Email Id.</div>
-                  </div>
 
                 </div>
               </div>

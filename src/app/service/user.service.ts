@@ -15,11 +15,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   public registerUser(user: User): Observable<User> {
-    return this.http.post<User>(this.baseUrl+'/registration/register', user);
+    return this.http.post<User>(this.baseUrl+'/user/register', user);
   }
 
   public loginUser(user2: User2): Observable<User2> {
-    return this.http.post<User2>(this.baseUrl+'/login', user2);
+    return this.http.post<User2>(this.baseUrl+'/user/login', user2);
   }
 
   public logoutUser(){

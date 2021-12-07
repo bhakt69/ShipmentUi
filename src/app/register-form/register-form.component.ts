@@ -36,7 +36,7 @@ ngOnInit(){
   onFormSubmit(){
     this.userService.registerUser(this.model).subscribe(
       (response: any) => {
-        this.toastr.success( 'Login Successful' ,'Success');
+        this.toastr.success( 'Login to your account' ,'Account Created');
         this.router.navigateByUrl('home');
       },
       (error: any) => {

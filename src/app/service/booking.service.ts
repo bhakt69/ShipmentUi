@@ -22,6 +22,6 @@ export class BookingService {
   }
 
   public deleteBooking(bookingId: number): any {
-    return this.http.delete<any>(this.baseUrl + '/booking/delete?bookingId='+ bookingId);
+    return this.http.delete<any>(this.baseUrl + '/booking/delete/'+ bookingId);
   }
 }
