@@ -48,7 +48,7 @@
 
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Origin Pincode</label>
-                      <input name="senderPinCode" ngModel type="number" id="from-country-location" placeholder="Eg:- 452001">
+                      <input name="senderPinCode" name="senderPinCode" #senderPinCode="ngModel" [(ngModel)]="model.senderPinCode" type="number" id="from-country-location" placeholder="Eg:- 452001">
                     </div>
                     <br>
                   </div>
@@ -122,7 +122,7 @@
 
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Destination Pincode</label>
-                      <input name="receiverPinCode" ngModel type="number" id="from-country-location" placeholder="Eg:- 567001">
+                      <input name="receiverPinCode" #receiverPinCode="ngModel" [(ngModel)]="model.receiverPinCode" type="number" id="from-country-location" placeholder="Eg:- 567001">
                     </div>
 
                   </div>
@@ -210,7 +210,7 @@
 
                 <div class="shipping-country-box form-group">
                   <label class="mycss2" for="from-country">Custom package Instructiions</label>
-                  <input name="userInstruction" type="text" ngModel placeholder="Custom Instructiions" class="mycss">
+                  <input name="userInstruction" #userInstruction="ngModel" type="text" [(ngModel)]="model.userInstruction" placeholder="Custom Instructiions" class="mycss">
 
 
                 </div>

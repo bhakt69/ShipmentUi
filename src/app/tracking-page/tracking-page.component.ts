@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { TrackingService } from '../service/tracking-service.service';
+import { Params, Router } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-tracking-page',
@@ -13,21 +15,43 @@ export class TrackingPageComponent implements OnInit{
 
   val: number = 0;
   stringifiedData: any;
+  trackingId: any;
+
+  
+  constructor(private trackingService: TrackingService,
+    private toastr: ToastrService,
+    private Activatedroute:ActivatedRoute,
+    private router:Router){    
+  }
 
   ngOnInit(){
-  }
-  constructor(private trackingService: TrackingService,
-    private toastr: ToastrService){    
+    this.trackingId = this.Activatedroute.snapshot.queryParamMap.get('trackingId')||0;
+    if(this.trackingId){
+      this.trackingService.trackPackage(this.trackingId).subscribe(
+        (response: any) => {
+          this.toastr.clear();
+          this.stringifiedData = Array.of(response);
+          // console.log(this.stringifiedData);
+        },
+        (error: HttpErrorResponse) => {
+          this.toastr.clear();
+          this.toastr.error(error.error.errorMessage, 'Error');
+        }
+      );
+    }
   }
 
   onSubmit(f : NgForm){
     this.trackingService.trackPackage(f.value['trackingId']).subscribe(
-      (response: any) => {   
+      (response: any) => {
+        this.toastr.clear();
         this.stringifiedData = Array.of(response);
         // console.log(this.stringifiedData);
       },
       (error: HttpErrorResponse) => {
+        this.toastr.clear();
         this.toastr.error(error.error.errorMessage, 'Error');
+        this.stringifiedData = '';
       }
     );
   }

@@ -209,7 +209,7 @@ export class OrderListComponent implements OnInit{
   }
 
   onStatusClick(e1: any) {
-    console.log(e1.rowData);
+    // console.log(e1.rowData);
     alert('status');
   }
 

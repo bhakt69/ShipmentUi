@@ -12,9 +12,9 @@
                             <p data-animation="fadeInUpS" data-delay=".6s">Explore ways to become more efficient, see printing offers and solutions
                                 insights and inspiration for your small business.</p>
                             <div class="slider-form" data-animation="fadeInUpS" data-delay=".9s">
-                                <form action="#">
-                                    <input type="text" placeholder="Tracking id">
-                                    <button class="btn">Tracking</button>
+                                <form #trackignForm="ngForm" class="tracking-id-form" (ngSubmit)="onSubmit(trackignForm)">
+                                    <input type="text" id="tracking_id" #first="ngModel" ngModel name="trackingId">
+                                    <button class="btn red-btn">Tracking</button>
                                 </form>
                             </div>
                         </div>

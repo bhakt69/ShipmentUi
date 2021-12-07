@@ -35,21 +35,19 @@ export class BookingFormComponent implements OnInit {
       receiverName: '',
       bookingId: 0,
       receiverPinCode: 0,
-      senderPinCode: 0
+      senderPinCode: 0,
+      trackingId: ''
     };
 
   ngOnInit() {   
   }
 
   onFormSubmit() {
-    console.log(this.model);  
     this.bookingService.createBooking(this.model).subscribe(
       (response: any) => {
-        alert('Success');
-        this.toastr.success('Your booking id is'+response.message, 'Booking Created');
+        this.toastr.success('Your booking id is:  '+ response.trackingId, 'Booking Created');
       },
       (error: any) => {
-        console.log(error);
         this.toastr.error(error.message, 'Booking Failed');
       }
     );
