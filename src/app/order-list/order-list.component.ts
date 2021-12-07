@@ -4,6 +4,7 @@ import { Tracking } from '../model/tracking';
 import { environment } from 'src/environments/environment';
 import { BookingService } from '../service/booking.service';
 import { ToastrService } from 'ngx-toastr';
+import { DOCUMENT } from '@angular/common'; 
 
 
 
@@ -31,8 +32,11 @@ export class OrderListComponent implements OnInit {
   public gridColumnApi:any;
   public columnDefs: any;
   public sortingOrder: any;
+  public defaultColDef: any;
   private bookingservice: BookingService;
   private toastr: ToastrService;
+  public paginationPageSize: any;
+  public paginationNumberFormatter: any;
 
   constructor(private http: HttpClient){
     this.columnDefs=[
@@ -41,7 +45,9 @@ export class OrderListComponent implements OnInit {
         field:"senderName",
         width: 150,
         sortable: true,
-        sortingOrder:['asc', 'desc', 'null']
+        sortingOrder:['asc', 'desc', 'null'],
+        checkboxSelection: true,
+        headerCheckboxSelection: false,
       },
       {
         headerName: "Sender City",
@@ -49,29 +55,42 @@ export class OrderListComponent implements OnInit {
         width: 250,
         sortable: true,
         sortingOrder: ['asc', 'desc']
-      }
+      },
+      
     ]
     this.sortingOrder = ["asc", "desc", "null"];
+    this.paginationPageSize = 10;
+    this.paginationNumberFormatter = function (params: { value: { toLocaleString: () => string; }; }) {
+      return '[' + params.value.toLocaleString() + ']';
+    };
+    this.defaultColDef = {
+      editable: true,
+      enableRowGroup: true,
+      enablePivot: true,
+      enableValue: true,
+      sortable: true,
+      resizable: true,
+      filter: true,
+      flex: 1,
+      minWidth: 75,
+    };
   }
 
 
     onGridReady(params: any){
       this.gridApi = params.api;
       this.gridColumnApi = params.columnApi;
+
       this.http.get("http://localhost:8080/booking/getAllBookingInfo")
       .subscribe(response => {
         params.api.setRowData(response);
-      })
-      // this.bookingservice.getAllBookingList().subscribe(
-      //   (response: any) => {
-      //     params.api.setRowData(response);
-      //   },
-      //   (error: any) => {
-      //     this.toastr.error('','Error');
-      //   }
-      // );
-      // let datavalue = [{"senderName": "Rohit", "senderCityName": "Indore"},{"senderName": "Ankit", "senderCityName": "Asansol"}]
-      
+      });
+    }
+
+    onPageSizeChanged() {
+      document.getElementById("id")
+      var pageNum = 2 ;
+      this.gridApi.paginationSetPageSize(Number(pageNum));
     }
 }
 
