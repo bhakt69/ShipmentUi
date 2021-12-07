@@ -14,11 +14,11 @@ export class RegisterFormComponent implements OnInit {
 
   
 
-  constructor(
-    private userService: UserService,
-    private router: Router,
-    private toastr: ToastrService
-  ){}
+constructor(
+  private userService: UserService,
+  private router: Router,
+  private toastr: ToastrService
+){}
 
   
 model:User={

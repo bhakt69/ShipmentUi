@@ -1,14 +1,32 @@
 <app-header></app-header>
 
-<ag-grid-angular
-  style="width: 1500px; height: 750px;"
-  class="ag-theme-material"
-  [columnDefs]="columnDefs"
-  (gridReady)="onGridReady($event)"
-  [pagination]="true"
-></ag-grid-angular>
+<main>
+  <!-- <div class="tracking-area pt-95 pb-115"> -->
+    <div class="container">
+      <div class="example-header">
+        Page Size:
+        <select (change)="onPageSizeChanged()">
+          <option value="10" selected="">10</option>
+          <option value="25">25</option>
+          <option value="100">100</option>
+          <option value="500">500</option>
+        </select>
+      </div>
 
-<!-- <table datatable [dtOptions]="dtOptions" class="row-border hover"></table> -->
+      
+      <ag-grid-angular style="width: 1500px; height: 500px;" 
+      class="ag-theme-material" 
+      [columnDefs]="columnDefs"
+      (gridReady)="onGridReady($event)" 
+      [defaultColDef]="defaultColDef" 
+      [enableRangeSelection]="true"
+      [pagination]="true" 
+      [paginationPageSize]="paginationPageSize"
+      [paginationNumberFormatter]="paginationNumberFormatter"
+      ></ag-grid-angular>
+    </div>
+  <!-- </div> -->
+</main>
 <app-footer></app-footer>
 
 <!-- <main>
