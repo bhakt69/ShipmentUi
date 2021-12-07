@@ -5,7 +5,7 @@
     <div class="container">
       <div class="example-header">
         Page Size:
-        <select (change)="onPageSizeChanged()">
+        <select (change)="onPageSizeChanged()" id="paginateCount">
           <option value="10" selected="">10</option>
           <option value="25">25</option>
           <option value="100">100</option>
@@ -15,7 +15,7 @@
 
       
       <ag-grid-angular style="width: 1500px; height: 500px;" 
-      class="ag-theme-material" 
+      class="ag-theme-bootstrap" 
       [columnDefs]="columnDefs"
       (gridReady)="onGridReady($event)" 
       [defaultColDef]="defaultColDef" 
@@ -23,6 +23,7 @@
       [pagination]="true" 
       [paginationPageSize]="paginationPageSize"
       [paginationNumberFormatter]="paginationNumberFormatter"
+      domLayout='autoHeight'
       ></ag-grid-angular>
     </div>
   <!-- </div> -->

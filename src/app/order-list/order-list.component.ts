@@ -56,6 +56,76 @@ export class OrderListComponent implements OnInit {
         sortable: true,
         sortingOrder: ['asc', 'desc']
       },
+      {
+        headerName: "Sender's Address",
+        field: "senderAddress",
+        width: 300,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Sender Email",
+        field: "senderEmailId",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Sender Mobile",
+        field: "senderMobileNumber",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Sender Pincode",
+        field: "senderPinCode",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver Name",
+        field: "receiverName",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver City",
+        field: "receiverCityName",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver's Address",
+        field: "receiverAddress",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver Email",
+        field: "receiverEmailId",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver Mobile",
+        field: "receiverMobileNumber",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver Pincode",
+        field: "receiverPinCode",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
       
     ]
     this.sortingOrder = ["asc", "desc", "null"];
@@ -88,8 +158,7 @@ export class OrderListComponent implements OnInit {
     }
 
     onPageSizeChanged() {
-      document.getElementById("id")
-      var pageNum = 2 ;
+      var pageNum = (<HTMLInputElement>document.getElementById('paginateCount')).value;
       this.gridApi.paginationSetPageSize(Number(pageNum));
     }
 }
