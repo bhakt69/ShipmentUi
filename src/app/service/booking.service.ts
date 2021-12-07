@@ -17,4 +17,8 @@ export class BookingService {
     return this.http.post<Booking>( this.baseUrl + '/booking/create', booking);
   }
 
+  public getAllBookingList(): Observable<Booking[]> {
+    return this.http.get<Booking[]>( this.baseUrl + '/booking/getAllBookingInfo');
+  }
+
 }

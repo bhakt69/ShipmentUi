@@ -1,5 +1,17 @@
 <app-header></app-header>
-<main>
+
+<ag-grid-angular
+  style="width: 1500px; height: 750px;"
+  class="ag-theme-material"
+  [columnDefs]="columnDefs"
+  (gridReady)="onGridReady($event)"
+  [pagination]="true"
+></ag-grid-angular>
+
+<!-- <table datatable [dtOptions]="dtOptions" class="row-border hover"></table> -->
+<app-footer></app-footer>
+
+<!-- <main>
   <div class="tracking-area pt-95 pb-115">
     <div class="container">
       <table datatable [dtOptions]="dtOptions" class="row-border hover">
@@ -7,11 +19,11 @@
           <tr>
             <th>ID</th>
             <th>Booked BY</th>
-            <!-- <th>Booked From</th> -->
+            <th>Booked From</th>
             <th>Mobile</th>
             <th>Pincode</th>
             <th>Receiver Name</th>
-            <!-- <th>Receiver Address </th> -->
+            <th>Receiver Address </th>
             <th>Receiver Mobile</th>
             <th>Receiver PinCode</th>
           </tr>
@@ -20,11 +32,11 @@
           <tr *ngFor="let track of trackings">
             <td>{{ track.bookingId }}</td>
             <td>{{ track.senderName }}</td>
-            <!-- <td>{{ track.senderAddress }}</td> -->
+            <td>{{ track.senderAddress }}</td>
             <td>{{ track.senderMobileNumber }}</td>
             <td>{{ track.senderPinCode }}</td>
             <td>{{ track.receiverName }}</td>
-            <!-- <td>{{ track.receiverAddress }}</td> -->
+            <td>{{ track.receiverAddress }}</td>
             <td>{{ track.receiverMobileNumber }}</td>
             <td>{{ track.receiverPinCode }}</td>
           </tr>
@@ -37,9 +49,4 @@
       </table>      
     </div>
   </div>
-</main>
-
-
-<!-- <table datatable [dtOptions]="dtOptions" class="row-border hover"></table> -->
-<app-footer></app-footer>
-
+</main> -->

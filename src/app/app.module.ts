@@ -21,7 +21,7 @@ import { DataTablesModule } from "angular-datatables";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth.interceptor';
-
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,8 @@ import { AuthInterceptor } from './auth.interceptor';
     HttpClientModule,
     DataTablesModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AgGridModule.withComponents([])
   ],
   providers: [
     TrackingService,

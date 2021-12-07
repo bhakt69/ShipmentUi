@@ -39,7 +39,9 @@
               "src/assets/css/style.css",
               "src/assets/css/responsive.css",
               "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css",
-              "src/assets/css/toast.css"
+              "src/assets/css/toast.css",
+              "node_modules/ag-grid/dist/styles/ag-grid.css",
+              "node_modules/ag-grid/dist/styles/ag-theme-balham.css"
             ],
             "scripts": [
               "src/assets/js/vendor/jquery-1.12.4.min.js",
