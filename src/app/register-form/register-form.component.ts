@@ -1,9 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { AbstractControl, FormGroup, NgForm, ValidatorFn } from '@angular/forms';
 import { User } from '../model/user';
 import { UserService } from '../service/user.service';
 import { ToastrService } from 'ngx-toastr';
+
+function validatePassword(): ValidatorFn {
+  return (control: AbstractControl) => {
+    let isValid = false;
+    if (control && control instanceof FormGroup) {
+      let group = control as FormGroup;
+      if (group.controls['password'] && group.controls['passwordconf']) {
+        isValid = group.controls['password'].value == group.controls['passwordconf'].value;
+      }
+    }
+    if (isValid) {
+      return null;
+    } else {
+      return { 'passwordCheck': 'failed' }
+    }
+  }
+}
 
 @Component({
   selector: 'app-register-form',

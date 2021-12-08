@@ -10,66 +10,123 @@
                   <div class="form-group">
                       <label for="firstName"><i aria-hidden="true" class="fa fa-user"></i></label>
                       <input type="text" name="firstName" id="name" placeholder="First Name"  [(ngModel)]="model.firstName"  [ngClass]="{'invalid-data': firstName.invalid && userRegister.submitted, 'valid-data':firstName.valid && userRegister.submitted}"
-                      required name="firstName"  #firstName="ngModel">
-                      <div *ngIf="firstName.invalid && userRegister.submitted">
-                        <div style="color:red;">Please Enter First Name.</div>
-                      </div>
+                      required name="firstName"  #firstName="ngModel"  minlength="8" maxlength="30"  pattern="[a-zA-Z][a-zA-Z ]+" ngModel>
+                      <div *ngIf=" (firstName.touched && firstName.invalid) || userRegister.submitted " class="alert alert-danger">
+                        <div  *ngIf="firstName.errors?.['required']">
+                          First Name is required
+                        </div>
+                        <div  *ngIf="firstName.errors?.['pattern']">
+                          First Name is invalid
+                        </div>
+                        <div  *ngIf="firstName.errors?.['minlength']">
+                          minimm enter 8 character 
+                          </div>
+                          <div  *ngIf="firstName.errors?.['maxlength']">
+                           maximum 30 char only
+                            </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="lastName"><i aria-hidden="true" class="fa fa-user"></i></label>
                     <input type="text" name="lastName" id="name" placeholder="Enter Last Name"  [(ngModel)]="model.lastName"  [ngClass]="{'invalid-data': lastName.invalid && userRegister.submitted, 'valid-data':lastName.valid && userRegister.submitted}"
-                    required name="lastName"  #lastName="ngModel">
-                    <div *ngIf="lastName.invalid && userRegister.submitted">
-                      <div style="color: red;">Please Enter Last Name.</div>
-                    </div>
+                    required name="lastName" pattern="[a-zA-Z][a-zA-Z ]+" minlength="8" maxlength="30"  #lastName="ngModel" ngModel>
+                    <div *ngIf=" (lastName.touched && lastName.invalid) || userRegister.submitted " class="alert alert-danger">
+                      <div  *ngIf="lastName.errors?.['required']">
+                       Last Name is required
+                      </div>
+                      <div  *ngIf="lastName.errors?.['pattern']">
+                        Last Name is invalid
+                      </div>
+                      <div  *ngIf="lastName.errors?.['minlength']">
+                        minimm enter 8 character 
+                        </div>
+                        <div  *ngIf="lastName.errors?.['maxlength']">
+                         maximum 30 char only
+                          </div>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="contactNumber"><i aria-hidden="true" class="fa fa-phone"></i></label>
                   <input type="text" name="contactNumber" id="name" placeholder="Enter Contact Number"  [(ngModel)]="model.contactNumber"  [ngClass]="{'invalid-data': contactNumber.invalid && userRegister.submitted, 'valid-data':contactNumber.valid && userRegister.submitted}"
-                  required name="contactNumber"  #contactNumber="ngModel">
-                  <div *ngIf="firstName.invalid && userRegister.submitted">
-                    <div style="color: red;">Please Enter Contact Number.</div>
-                  </div>
+                  required name="contactNumber"  #contactNumber="ngModel"  maxlength="10" pattern="^[0-9]" ngModel>
+                  <div *ngIf=" (contactNumber.touched && contactNumber.invalid) || userRegister.submitted " class="alert alert-danger">
+                    <div  *ngIf="contactNumber.errors?.['required']">
+                     Contact Number is required
+                    </div>
+                    <div  *ngIf="contactNumber.errors?.['pattern']">
+                     Contact  Mobile Number is invalid
+                    </div>
+                    <div  *ngIf="contactNumber.errors?.['maxlength']">
+                      Contact Number accept only 10 Digit
+                       </div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="address"><i aria-hidden="true" class="fa fa-location-arrow"></i></label>
-                <input type="text" name="address" id="name" placeholder="Enter Address"  [(ngModel)]="model.address"  [ngClass]="{'invalid-data': address.invalid && userRegister.submitted, 'valid-data':address.valid && userRegister.submitted}"
-                required name="address"  #address="ngModel">
-                <div *ngIf="address.invalid && userRegister.submitted">
-                  <div style="color: red;">Please Enter Address.</div>
-                </div>
+                <input type="text" name="address" id="name" placeholder="Enter Address" minlength="8" maxlength="30"  [(ngModel)]="model.address"  [ngClass]="{'invalid-data': address.invalid && userRegister.submitted, 'valid-data':address.valid && userRegister.submitted}"
+                required name="address"  #address="ngModel" ngModel>
+                <div *ngIf=" (address.touched && address.invalid) || userRegister.submitted " class="alert alert-danger">
+                  <div  *ngIf="address.errors?.['required']">
+                    Address is required
+                  </div>
+                  <div  *ngIf="address.errors?.['minlength']">
+                    minimm enter 8 character 
+                    </div>
+                    <div  *ngIf="address.errors?.['maxlength']">
+                     maximum 30 char only
+                      </div>
+              </div>
             </div>
                   <div class="form-group">
                       <label for="email"><i aria-hidden="true" class="fa fa-envelope"></i></label>
                       <input type="email" name="email" id="email" placeholder="Enter Email"  [(ngModel)]="model.email"  [ngClass]="{'invalid-data': email.invalid && userRegister.submitted, 'valid-data':email.valid && userRegister.submitted}"
-                      required name="email"  #email="ngModel">
-                      <div *ngIf="email.invalid && userRegister.submitted">
-                        <div style="color: red;">Please Enter Email.</div>
-                      </div>
+                      required name="email"  #email="ngModel" maxlength="30" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" ngModel>
+                      <div *ngIf=" (email.touched && email.invalid) || userRegister.submitted " class="alert alert-danger">
+                        <div  *ngIf="email.errors?.['required']">
+                            Sender Email Id is required
+                        </div>
+                        <div  *ngIf="email.errors?.['pattern']">
+                            Sender Email Id is invalid
+                        </div>
+                        <div  *ngIf="email.errors?.['maxlength']">
+                          maximum 30 char only
+                           </div>
+                    </div>
                   </div>
                   <div class="form-group">
                       <label for="password"><i aria-hidden="true" class="fa fa-lock"></i></label>
                       <input type="password" name="password" id="pass" placeholder="Enter Password"  [(ngModel)]="model.password"  [ngClass]="{'invalid-data': password.invalid && userRegister.submitted, 'valid-data':password.valid && userRegister.submitted}"
-                      required name="password"  #password="ngModel">
-                      <div *ngIf="password.invalid && userRegister.submitted">
-                        <div style="color: red;">Please Enter Password.</div>
-                      </div>
+                      required name="password"  #password="ngModel"pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" (change)="model.password=password.value" ngModel> 
+                      <div *ngIf=" (password.touched && password.invalid) || userRegister.submitted" class="alert alert-danger" >
+                        <div  *ngIf="password.errors?.['required']">
+                            Password is required
+                        </div>
+                        <div  *ngIf="password.errors?.['pattern']">
+                            Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character.
+                        </div>
+                    </div>
                   </div>
-                 <!-- <div class="form-group">
+                 <div class="form-group">
                       <label for="re-pass"><i aria-hidden="true" class="fa fa-lock"></i></label>
-                      <input type="password" name="passwordconf" id="re_pass" placeholder="Repeat your password"  [(ngModel)]="model.passwordconf"  [ngClass]="{'invalid-data': passwordconf.invalid && userRegister.submitted, 'valid-data':passwordconf.valid && userRegister.submitted}"
-                      required name="passwordconf"  #passwordconf="ngModel">
-                      <div *ngIf="passwordconf.invalid && userRegister.submitted">
-                        <div style="color: red;">Please Enter Confirm Password.</div>
-                      </div>
-                  </div>-->
+                      <input type="password" name="passwordconf" id="re_pass" placeholder="Repeat your password"  [ngClass]="{'invalid-data': passwordconf.invalid && userRegister.submitted, 'valid-data':passwordconf.valid && userRegister.submitted}"
+                      required name="passwordconf"  #passwordconf="ngModel" ngModel>
+                  <div *ngIf=" (password.touched && password.invalid) || userRegister.submitted" class="alert alert-danger">
+                    <div  *ngIf="password.errors?.['required']">
+                        Password is required
+                    </div>
+                    <div  *ngIf="password.errors?.['pattern']">
+                        Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character.
+                    </div>
+                  
+                </div>
+                  </div>
                   <div class="form-group form-button">
                       <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
                   </div>
               </form>
           </div>
           <div class="signup-image">
-              <!-- <figure><img [src]="imageSrc" [alt]="imageAlt" ></figure> -->
+             <figure><img src="../../assets/images/signup-image.jpg" alt="sign up image" ></figure> 
               <a href="/login" class="signup-image-link">I am already member</a>
           </div>
       </div>

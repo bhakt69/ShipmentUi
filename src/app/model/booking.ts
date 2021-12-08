@@ -1,5 +1,6 @@
 export interface Booking {
     bookingId: number
+    trackingId:string
     category: string
     priority: string
     type: string
