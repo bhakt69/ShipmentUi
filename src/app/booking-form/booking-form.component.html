@@ -14,42 +14,77 @@
                   <div class="shipping-address-form">
                     <div class="shipping-country-box form-group">
                       <label for="from-country">from customer</label>
-                      <input name="senderName" type="text" id="from-country" placeholder="Sender's Name"
-                        [(ngModel)]="model.senderName"
+                      <input name="senderName" type="text" id="from-country" placeholder="Sender's Name"[(ngModel)]="model.senderName"
                         [ngClass]="{'invalid-data': senderName.invalid && f.submitted, 'valid-data':senderName.valid && f.submitted}"
-                        required name="senderName" #senderName="ngModel">
-                      <div *ngIf="senderName.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Sender Name.</div>
+                        required name="senderName" pattern="[a-zA-Z][a-zA-Z ]+" minlength="8" maxlength="30" #senderName="ngModel" ngModel>
+                        <div *ngIf=" (senderName.touched && senderName.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="senderName.errors?.['required']">
+                            sender Name is required
+                          </div>
+                          <div  *ngIf="senderName.errors?.['pattern']">
+                            Sender Name is invalid
+                          </div>
+                          <div  *ngIf="senderName.errors?.['minlength']">
+                          minimm enter 5 character 
+                          </div>
+                          <div  *ngIf="senderName.errors?.['maxlength']">
+                           maximum 30 char only
+                            </div>
                       </div>
                     </div>
 
                     <div class="shipping-country-box form-group">
                       <label for="from-country-location">add parcel origin</label>
-                      <input type="text" placeholder="Enter Address" id="from-country-location"
-                        [(ngModel)]="model.senderAddress"
+                      <input type="text" placeholder="Enter Address" id="from-country-location"[(ngModel)]="model.senderAddress"
                         [ngClass]="{'invalid-data': senderAddress.invalid && f.submitted, 'valid-data':senderAddress.valid && f.submitted}"
-                        required name="senderAddress" #senderAddress="ngModel">
-
-                      <div *ngIf="senderAddress.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Sender Address.</div>
+                        required name="senderAddress" #senderAddress="ngModel" minlength="8" maxlength="30"ngModel>
+                        <div *ngIf=" (senderAddress.touched && senderAddress.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="senderAddress.errors?.['required']">
+                            Sender Address is required
+                          </div>
+                          <div  *ngIf="senderAddress.errors?.['minlength']">
+                            minimm enter 8 character 
+                            </div>
+                            <div  *ngIf="senderAddress.errors?.['maxlength']">
+                             maximum 30 char only
+                              </div>
                       </div>
                     </div>
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Origin City</label>
-                      <input name="senderCityName" type="text" id="from-country-location" placeholder="Eg:- Indore"
-                        [(ngModel)]="model.senderCityName"
+                      <input name="senderCityName" type="text" id="from-country-location" placeholder="Eg:- Indore"[(ngModel)]="model.senderCityName"
                         [ngClass]="{'invalid-data': senderCityName.invalid && f.submitted, 'valid-data':senderCityName.valid && f.submitted}"
-                        required name="senderCityName" #senderCityName="ngModel">
-
-                      <div *ngIf="senderCityName.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Sender City Name.</div>
+                        required name="senderCityName" #senderCityName="ngModel" pattern="[a-zA-Z][a-zA-Z ]+" minlength="8" maxlength="30"ngModel>
+                        <div *ngIf=" (senderCityName.touched && senderCityName.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="senderCityName.errors?.['required']">
+                            Sender City Name is required
+                          </div>
+                          <div  *ngIf="senderCityName.errors?.['pattern']">
+                            Sender City Name is invalid
+                          </div>
+                          <div  *ngIf="senderCityName.errors?.['minlength']">
+                            minimm enter 8 character 
+                            </div>
+                            <div  *ngIf="senderCityName.errors?.['maxlength']">
+                             maximum 30 char only
+                              </div>
                       </div>
                     </div>
 
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Origin Pincode</label>
-                      <input name="senderPinCode" name="senderPinCode" #senderPinCode="ngModel" [(ngModel)]="model.senderPinCode" type="number" id="from-country-location" placeholder="Eg:- 452001">
+                      <input name="senderPinCode" name="senderPinCode" #senderPinCode="ngModel" type="number" [(ngModel)]="model.senderPinCode" required
+                      id="from-country-location" placeholder="Eg:- 452001" pattern="^[1-9][0-9]{5}$"[ngClass]="{'invalid-data': senderPinCode.invalid && f.submitted, 'valid-data':senderPinCode.valid && f.submitted}" ngModel>
+                      <div *ngIf=" (senderPinCode.touched && senderPinCode.invalid) || f.submitted " class="alert alert-danger">
+                        <div  *ngIf="senderPinCode.errors?.['required']">
+                          Sender Pincode is required
+                        </div>
+                        <div  *ngIf="senderPinCode.errors?.['pattern']">
+                          Sender Pincode is invalid
+                        </div>
                     </div>
+                    </div>
+                  
                     <br>
                   </div>
                 </li>
@@ -57,25 +92,29 @@
                   <div class="shipping-address-form">
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Mobile Number</label>
-                      <input name="senderMobileNumber" type="text" id="from-country-location"
-                        [(ngModel)]="model.senderMobileNumber"
+                      <input name="senderMobileNumber" type="text" id="from-country-location" [(ngModel)]="model.senderMobileNumber"
                         [ngClass]="{'invalid-data': senderMobileNumber.invalid && f.submitted, 'valid-data':senderMobileNumber.valid && f.submitted}"
-                        required name="senderMobileNumber" #senderMobileNumber="ngModel">
-
-                      <div *ngIf="senderMobileNumber.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Sender Mobile Number</div>
+                        required name="senderMobileNumber" #senderMobileNumber="ngModel" pattern="^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}98(\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$" ngModel>
+                        <div *ngIf=" (senderMobileNumber.touched && senderMobileNumber.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="senderMobileNumber.errors?.['required']">
+                            Sender Mobile Number is required
+                          </div>
+                          <div  *ngIf="senderMobileNumber.errors?.['pattern']">
+                            Sender Mobile Number is invalid
+                          </div>
                       </div>
                     </div>
 
                     <div class="shipping-country-box form-group">
                       <label for="from-country">Email Id</label>
-                      <input name="senderEmailId" type="email" id="from-country-location"
+                      <input name="senderEmailId" type="email" id="from-country-location" email="true"
                         placeholder="Eg:- abc@mail.com" [(ngModel)]="model.senderEmailId"
                         [ngClass]="{'invalid-data': senderEmailId.invalid && f.submitted, 'valid-data':senderEmailId.valid && f.submitted}"
-                        required name="senderEmailId" #senderEmailId="ngModel">
-
-                      <div *ngIf="senderEmailId.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Sender Email.</div>
+                        required name="senderEmailId"  #senderEmailId="ngModel">
+                        <div *ngIf=" (senderEmailId.touched && senderEmailId.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="senderEmailId.errors?.['required']">
+                              Sender Email Id is required
+                          </div>                        
                       </div>
                     </div>
 
@@ -86,12 +125,22 @@
                     <div class="shipping-country-box form-group">
                       <label for="to-country">TO Customer</label>
                       <input name="receiverName" type="text" id="to-country" placeholder="Receiver's Name"
-                        [(ngModel)]="model.receiverName"
+                        pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="model.receiverName"
                         [ngClass]="{'invalid-data': receiverName.invalid && f.submitted, 'valid-data':receiverName.valid && f.submitted}"
-                        required name="receiverName" #receiverName="ngModel">
-
-                      <div *ngIf="receiverName.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Receiver Name.</div>
+                        required name="receiverName" #receiverName="ngModel" minlength="8" maxlength="30"ngModel>
+                        <div *ngIf=" (receiverName.touched && receiverName.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="receiverName.errors?.['required']">
+                            Receiver Name is required
+                          </div>
+                          <div  *ngIf="receiverName.errors?.['pattern']">
+                            Receiver Name is invalid
+                          </div>
+                          <div  *ngIf="receiverName.errors?.['minlength']">
+                            minimm enter 8 character 
+                            </div>
+                            <div  *ngIf="receiverName.errors?.['maxlength']">
+                             maximum 30 char only
+                              </div>
                       </div>
                     </div>
 
@@ -100,10 +149,17 @@
                       <input name="receiverAddress" type="text" id="to-country-location"
                         placeholder="Receiver's Address" [(ngModel)]="model.receiverAddress"
                         [ngClass]="{'invalid-data': receiverAddress.invalid && f.submitted, 'valid-data':receiverAddress.valid && f.submitted}"
-                        required name="receiverAddress" #receiverAddress="ngModel">
-
-                      <div *ngIf="receiverName.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Receiver Address.</div>
+                        required name="receiverAddress" #receiverAddress="ngModel"minlength="8" maxlength="30" ngModel>
+                        <div *ngIf=" (receiverAddress.touched && receiverAddress.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="receiverAddress.errors?.['required']">
+                           Receiver Address Name is required
+                          </div>
+                          <div  *ngIf="receiverAddress.errors?.['minlength']">
+                            minimm enter 8 character 
+                            </div>
+                            <div  *ngIf="receiverAddress.errors?.['maxlength']">
+                             maximum 30 char only
+                              </div>
                       </div>
                     </div>
 
@@ -112,17 +168,37 @@
                       <input name="receiverCityName" type="text" id="from-country-location" placeholder="Eg:- Gwalior"
                         [(ngModel)]="model.receiverCityName"
                         [ngClass]="{'invalid-data': receiverCityName.invalid && f.submitted, 'valid-data':receiverCityName.valid && f.submitted}"
-                        required name="receiverCityName" #receiverCityName="ngModel">
-
-                      <div *ngIf="receiverName.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Receiver City Name.</div>
+                        required name="receiverCityName" #receiverCityName="ngModel"minlength="8" maxlength="30" pattern="[a-zA-Z][a-zA-Z ]+" ngModel>
+                        <div *ngIf=" (receiverCityName.touched && receiverCityName.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="receiverCityName.errors?.['required']">
+                            Receiver City Name is required
+                          </div>
+                          <div  *ngIf="receiverCityName.errors?.['pattern']">
+                            Receiver City Name is invalid
+                          </div>
+                          <div  *ngIf="receiverCityName.errors?.['minlength']">
+                            minimm enter 8 character 
+                            </div>
+                            <div  *ngIf="receiverCityName.errors?.['maxlength']">
+                             maximum 30 char only
+                              </div>
                       </div>
                     </div>
 
 
                     <div class="single-shipping-details-box form-group">
                       <label for="from-country-location">Destination Pincode</label>
-                      <input name="receiverPinCode" #receiverPinCode="ngModel" [(ngModel)]="model.receiverPinCode" type="number" id="from-country-location" placeholder="Eg:- 567001">
+                      <input name="receiverPinCode" #receiverPinCode="ngModel" [(ngModel)]="model.receiverPinCode" type="number" 
+                      [ngClass]="{'invalid-data': receiverPinCode.invalid && f.submitted, 'valid-data':receiverPinCode.valid && f.submitted}"
+                      id="from-country-location" pattern="^[1-9][0-9]{5}$" placeholder="Eg:- 567001"required ngModel>
+                      <div *ngIf=" (receiverPinCode.touched && receiverPinCode.invalid) || f.submitted " class="alert alert-danger">
+                        <div  *ngIf="receiverPinCode.errors?.['required']">
+                          Receiver Pincode is required
+                        </div>
+                        <div  *ngIf="receiverPinCode.errors?.['pattern']">
+                          Receiver Pincode is invalid
+                        </div>
+                    </div>
                     </div>
 
                   </div>
@@ -134,10 +210,15 @@
                       <input name="receiverMobileNumber" type="text" id="from-country-location"
                         placeholder="Eg:- 9898989898" [(ngModel)]="model.receiverMobileNumber"
                         [ngClass]="{'invalid-data': receiverMobileNumber.invalid && f.submitted, 'valid-data':receiverCityName.valid && f.submitted}"
-                        required name="receiverMobileNumber" #receiverMobileNumber="ngModel">
-
-                      <div *ngIf="receiverMobileNumber.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Receiver Mobile Number.</div>
+                        required name="receiverMobileNumber" pattern="^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}98(\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$"  #receiverMobileNumber="ngModel" ngModel>
+                        <div *ngIf=" (receiverMobileNumber.touched && receiverMobileNumber.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="receiverMobileNumber.errors?.['required']">
+                            Receiver Mobile Number is required
+                          </div>
+                          <div  *ngIf="receiverMobileNumber.errors?.['pattern']">
+                            Receiver Mobile Number is invalid
+                          </div>
+                         
                       </div>
                     </div>
 
@@ -145,14 +226,17 @@
                       <label for="from-country">Email Id</label>
                       <input name="receiverEmailId" type="email" id="from-country-location"
                         placeholder="Eg:- abc@mail.com" [(ngModel)]="model.receiverEmailId"
-                        [(ngModel)]="model.receiverEmailId"
+                        [(ngModel)]="model.receiverEmailId"  minlength="8" maxlength="30"pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"
                         [ngClass]="{'invalid-data': receiverEmailId.invalid && f.submitted, 'valid-data':receiverEmailId.valid && f.submitted}"
-                        required #receiverEmailId="ngModel">
-
-                      <div *ngIf="receiverEmailId.invalid && f.submitted">
-                        <div style="color: red;">Please Enter Receiver Email Id.</div>
-                        <div class="text-danger">Please provide a valid email address
-                        </div>
+                        required #receiverEmailId="ngModel"ngMode>
+                        <div *ngIf=" (receiverEmailId.touched && receiverEmailId.invalid) || f.submitted " class="alert alert-danger">
+                          <div  *ngIf="receiverEmailId.errors?.['required']">
+                              Receiver Email Id is required
+                          </div>
+                          <div  *ngIf="receiverEmailId.errors?.['pattern']">
+                              Receiver Email Id is invalid
+                          </div>
+                          
                       </div>
                     </div>
 
@@ -176,7 +260,7 @@
                   <select class="custom-select" name="category" id="packaging-weight" [(ngModel)]="model.category"
                     #category="ngModel"
                     [ngClass]="{'invalid-data': category.invalid && f.submitted, 'valid-data': category.valid && f.submitted}"
-                    required>
+                    required ngModel>
                     <option [ngValue]="null">---Select---</option>
                     <option value="ELECTRONICS">Electronics</option>
                     <option value="MEDICAL">Medical</option>
@@ -185,9 +269,11 @@
                     <option value="VEHICLE">Vehicle</option>
                     <option value="LARGE_CARGO">Large Cargo</option>
                   </select>
-                  <div *ngIf="category.invalid && f.submitted">
-                    <span style="color: red;">Please Select category.</span>
-                  </div>
+                  <div *ngIf=" (category.touched && category.invalid) || f.submitted " class="alert alert-danger">
+                    <div  *ngIf="category.errors?.['required']">
+                      Category is required
+                    </div>
+                </div>
                 </div>
 
 
@@ -196,23 +282,36 @@
                   <select class="custom-select" name="priority" id="cargo-transport" [(ngModel)]="model.priority"
                     #priority="ngModel"
                     [ngClass]="{'invalid-data': priority.invalid && f.submitted, 'valid-data': priority.valid && f.submitted}"
-                    required>
+                    required ngModel>
                     <option [ngValue]="null">---Select---</option>
                     <option value="LOW">Low</option>
                     <option value="MEDIUM">Medium</option>
                     <option value="HIGH">High</option>
                     <option value="URGENT">Urgent</option>
                   </select>
-                  <div *ngIf="priority.invalid && f.submitted">
-                    <span style="color: red;">Please Select Priority.</span>
-                  </div>
+                  <div *ngIf=" (priority.touched && priority.invalid) || f.submitted " class="alert alert-danger">
+                    <div  *ngIf="priority.errors?.['required']">
+                      priority is required
+                    </div>
+                </div>
                 </div>
 
                 <div class="shipping-country-box form-group">
                   <label class="mycss2" for="from-country">Custom package Instructiions</label>
-                  <input name="userInstruction" #userInstruction="ngModel" type="text" [(ngModel)]="model.userInstruction" placeholder="Custom Instructiions" class="mycss">
-
-
+                  <input name="userInstruction" #userInstruction="ngModel" type="text" [(ngModel)]="model.userInstruction"
+                   placeholder="Custom Instructiions"  [ngClass]="{'invalid-data': priority.invalid && f.submitted, 'valid-data': priority.valid && f.submitted}"
+                   class="mycss" minlength="20" maxlength="50" required ngModel>
+                   <div *ngIf=" (userInstruction.touched && userInstruction.invalid) || f.submitted " class="alert alert-danger">
+                    <div  *ngIf="userInstruction.errors?.['required']">
+                     User Instruction is required
+                    </div>
+                    <div  *ngIf="userInstruction.errors?.['minlength']">
+                      minimm enter 20 character 
+                      </div>
+                      <div  *ngIf="userInstruction.errors?.['maxlength']">
+                       maximum 50 char only
+                        </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -220,7 +319,6 @@
         </div>
         <br>
         <button type="submit" class="btn f-right nextBtn-2 btn-success"><span>Confirm &nbsp;</span> Booking</button>
-
       </form>
     </div>
   </section>
