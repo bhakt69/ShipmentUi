@@ -2407,7 +2407,7 @@ label {
 .d-services-img::before {
 	content: "";
 	position: absolute;
-	background-image: url(../img/images/ellips_shape.png);
+	/* background-image: url(../img/images/ellips_shape.png); */
 	width: 578px;
 	height: 578px;
 	background-repeat: no-repeat;
@@ -2544,7 +2544,7 @@ label {
 	color: #fff;
 }
 .service-sidebar-support {
-	background-image: url(../img/images/sidebar_support.jpg);
+	/* background-image: url(../img/images/sidebar_support.jpg); */
 	text-align: center;
 	background-position: center;
 	background-size: cover;

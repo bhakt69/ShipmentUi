@@ -23,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth.interceptor';
 import { AgGridModule } from 'ag-grid-angular';
 import { ListButtonComponent } from './list-button/list-button.component';
+import { StatusDropdownComponent } from './status-dropdown/status-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ListButtonComponent } from './list-button/list-button.component';
     TrackingListComponent,
     OrderListComponent,
     ListButtonComponent,
+    StatusDropdownComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { ListButtonComponent } from './list-button/list-button.component';
     DataTablesModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    AgGridModule.withComponents([ListButtonComponent]),
+    AgGridModule.withComponents([ListButtonComponent, StatusDropdownComponent]),
   ],
   providers: [
     TrackingService,

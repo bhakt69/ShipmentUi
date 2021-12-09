@@ -1,21 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Tracking } from '../model/tracking';
-import { environment } from 'src/environments/environment';
 import { BookingService } from '../service/booking.service';
 import { ToastrService } from 'ngx-toastr';
-import { DOCUMENT } from '@angular/common'; 
-import { ICellRendererAngularComp } from 'ag-grid-angular';
-import { ICellRendererParams } from 'ag-grid-community';
 import { ListButtonComponent } from '../list-button/list-button.component';
+import { StatusDropdownComponent } from '../status-dropdown/status-dropdown.component';
 
 
 
 class DataTablesResponse {
   data: any[];
-  // draw: number;
-  // recordsFiltered: number;
-  // recordsTotal: number;
 }
 
 @Component({
@@ -25,13 +18,9 @@ class DataTablesResponse {
 })
 
 
-export class OrderListComponent implements OnInit{
+export class OrderListComponent{
 
   frameworkComponents: any;
-
-  ngOnInit(): void {
-    
-  }
 
   //ng-grid from here
   public gridApi: any;
@@ -50,6 +39,12 @@ export class OrderListComponent implements OnInit{
     private toastr: ToastrService
     ) {
 
+      
+    this.frameworkComponents = {
+      listbuttonComponent: ListButtonComponent,
+      statusDropdownComponent: StatusDropdownComponent,
+    };
+
     this.columnDefs=[
       {
         headerName: "Name",
@@ -57,20 +52,12 @@ export class OrderListComponent implements OnInit{
         width: 150,
         sortable: true,
         sortingOrder:['asc', 'desc', 'null'],
-        checkboxSelection: true,
         headerCheckboxSelection: false,
       },
       {
         headerName: "Sender City",
         field: "senderCityName",
         width: 250,
-        sortable: true,
-        sortingOrder: ['asc', 'desc']
-      },
-      {
-        headerName: "Sender's Address",
-        field: "senderAddress",
-        width: 300,
         sortable: true,
         sortingOrder: ['asc', 'desc']
       },
@@ -110,15 +97,16 @@ export class OrderListComponent implements OnInit{
         sortingOrder: ['asc', 'desc']
       },
       {
-        headerName: "Receiver's Address",
-        field: "receiverAddress",
+        headerName: "Receiver Email",
+        field: "receiverEmailId",
         width: 250,
         sortable: true,
         sortingOrder: ['asc', 'desc']
       },
+      
       {
-        headerName: "Receiver Email",
-        field: "receiverEmailId",
+        headerName: "Booked Date",
+        field: "bookingDate",
         width: 250,
         sortable: true,
         sortingOrder: ['asc', 'desc']
@@ -139,13 +127,13 @@ export class OrderListComponent implements OnInit{
       },
       {
         headerName: "Status",
-        width: 500,
+        field: "status",
+        width: 750,
         editable: false,
-        cellRenderer: 'listbuttonComponent',
+        cellRenderer: 'statusDropdownComponent',
         cellRendererParams: {
-          onClick: this.onStatusClick.bind(this),
-          label: 'Status'
-        }
+          onChange: this.onStatusClick.bind(this),
+        },
       },
       {
         headerName: "Edit",
@@ -168,9 +156,7 @@ export class OrderListComponent implements OnInit{
         }
       },
     ]
-    this.frameworkComponents = {
-      listbuttonComponent: ListButtonComponent,
-    };
+
     this.sortingOrder = ["asc", "desc", "null"];
     this.paginationPageSize = 10;
     this.paginationNumberFormatter = function (params: { value: { toLocaleString: () => string; }; }) {
@@ -182,16 +168,10 @@ export class OrderListComponent implements OnInit{
       resizable: true,
       filter: true,
       flex: 1,
-      minWidth: 75,
+      minWidth: 160,
     };
   }
-  refresh(params: ICellRendererParams): boolean {
-    throw new Error('Method not implemented.');
-  }
-  agInit(params: ICellRendererParams): void {
-    throw new Error('Method not implemented.');
-  }
-
+  
 
   onGridReady(params: any){
     this.gridApi = params.api;
@@ -209,8 +189,7 @@ export class OrderListComponent implements OnInit{
   }
 
   onStatusClick(e1: any) {
-    // console.log(e1.rowData);
-    alert('status');
+    console.log(e1.selectedValue, e1.rowdata)
   }
 
   onEditClick(e1: any) {
@@ -219,6 +198,7 @@ export class OrderListComponent implements OnInit{
 
   onDeleteClick(e1: any) {
     // console.log(e1.rowData.bookingId);
+    
     this.bookingservice.deleteBooking(e1.rowData.bookingId).subscribe(
       (response: any) => {
         this.toastr.success('Booking Deleted', 'Success');

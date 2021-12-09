@@ -36,7 +36,8 @@ export class BookingFormComponent implements OnInit {
       bookingId: 0,
       receiverPinCode: 0,
       senderPinCode: 0,
-      trackingId: ''
+      trackingId: '',
+      bookingDate: ''
     };
 
   ngOnInit() {   

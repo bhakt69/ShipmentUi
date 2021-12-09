@@ -17,5 +17,5 @@ export interface Booking {
     senderName: string
     senderPinCode: number
     userInstruction: string
-    trackingId: string
+    bookingDate: string
 }

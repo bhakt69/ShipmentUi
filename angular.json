@@ -28,7 +28,7 @@
             "styles": [
               "src/assets/css/bootstrap.min.css",              
               "node_modules/ag-grid-community/dist/styles/ag-grid.css",
-              "node_modules/ag-grid-community/dist/styles/ag-theme-bootstrap.css",
+              "node_modules/ag-grid-community/dist/styles/ag-theme-alpine.css",
               "src/assets/css/animate.min.css",
               "src/assets/css/magnific-popup.css",
               "src/assets/css/fontawesome-all.min.css",
