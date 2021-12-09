@@ -45,7 +45,8 @@ model:User={
   email: '',
   address: '',
   password: '',
-  userid_pk: 0
+  userid_pk: 0,
+  passwordconf: ''
 };
 ngOnInit(){    
 }

@@ -11,29 +11,6 @@
                         </ul>
                     </div>
                 </div>
-                <!-- <div class="col-xl-6 col-lg-5 col-md-6">
-                    <div class="header-top-right d-flex justify-content-end align-items-center">
-                        <div class="header-country">
-                            <form action="#">
-                                <select name="name" class="selected">
-                                    <option value="">New York</option>
-                                    <option value="">Washington</option>
-                                    <option value="">Lake</option>
-                                    <option value="">Seventh</option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="header-social">
-                            <ul>
-                                <li>Follow us :</li>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -58,20 +35,20 @@
                             </nav>
                         </div>
                         <div class="header-btn" *ngIf="!isLoggedIn()">       
-                            <button
+                            <button routerLink="/login" routerLinkActive="active"
                             style="margin: 50px; padding: 10px"
                             type="button"
                             class="btn btn-primary">
-                            <a routerLink="/login" routerLinkActive="active">Login / Register</a>
+                            <a href="javascript:void(0);">Login / Register</a>
                             
                             </button>
                         </div>
                         
-                        <div class="header-btn" *ngIf="isLoggedIn()">       
+                        <div class="header-btn" *ngIf="isLoggedIn()" (click)="logout();">       
                             <button
                             style="margin: 50px; padding: 10px"
                             type="button"
-                            class="btn btn-primary" (click)="logout();">
+                            class="btn btn-primary">
                             <a >Logout</a>                            
                             </button>
                         </div>
