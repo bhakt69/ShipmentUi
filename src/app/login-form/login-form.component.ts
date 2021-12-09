@@ -25,6 +25,7 @@ export class LoginFormComponent implements OnInit {
   model:User={
     firstName: '',
     lastName: '',
+    passwordconf: '',
     contactNumber: '',
     email: '',
     address: '',

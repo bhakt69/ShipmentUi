@@ -1,5 +1,6 @@
 export interface User {
     userid_pk: number
+    passwordconf: string
     firstName: string
     lastName: string
     contactNumber: string
