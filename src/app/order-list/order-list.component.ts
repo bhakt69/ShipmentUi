@@ -192,15 +192,6 @@ export class OrderListComponent{
     console.log(e1.selectedValue)
 
     console.log(e1.rowData)
-
-    this.bookingservice.editBookingStatus(e1.rowData, e1.selectedValue).subscribe(
-      (response) => {
-        this.toastr.success('Booking Deleted', 'Success');
-      },
-      (error) => {
-        this.toastr.error('Could not modify details', 'Error');
-      }
-    );
   }
 
   onEditClick(e1: any) {
