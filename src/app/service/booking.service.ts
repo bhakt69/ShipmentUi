@@ -8,7 +8,7 @@ import { Booking } from '../model/booking';
   providedIn: 'root'
 })
 export class BookingService {
-
+  
   private baseUrl = environment.usersUrl;
 
   constructor(private http: HttpClient) { }
@@ -24,4 +24,9 @@ export class BookingService {
   public deleteBooking(bookingId: number): any {
     return this.http.delete<any>(this.baseUrl + '/booking/delete/'+ bookingId);
   }
+
+  public editBooking(booking: Booking): Observable<Booking> {
+    return this.http.post<Booking>( this.baseUrl + '/booking/edit', booking);
+  }
+
 }

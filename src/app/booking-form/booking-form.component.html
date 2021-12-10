@@ -2,9 +2,10 @@
 <main>
   <section class="pricing-area pt-110 pb-90">
     <div class="container" style="max-width: 1200px;">
+      <div class="CreateBooking"><h1>Create Booking</h1></div>
       <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && onFormSubmit()" method="post">
         <div>
-          <div class="fare-rate-tab-content text-center" style="padding: 60px 70px 0px 70px; text-align:center;">
+          <div class="fare-rate-tab-content text-center" style="padding: 60px 70px 0px 70px; text-align:center;    margin-top: 30px;">
             <div class="modal-shipping-title">
               <h2>Shipping <span>details</span></h2>
             </div>
@@ -308,7 +309,7 @@
           </div>
         </div>
         <br>
-        <button type="submit" class="btn f-right nextBtn-2 btn-success"><span>Confirm &nbsp;</span> Booking</button>
+        <button type="submit" class="btn f-right nextBtn-2 btn-success" [disabled]="f.form.invalid"><span>Confirm &nbsp;</span> Booking</button>
       </form>
     </div>
   </section>

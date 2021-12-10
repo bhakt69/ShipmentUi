@@ -24,6 +24,8 @@ import { AuthInterceptor } from './auth.interceptor';
 import { AgGridModule } from 'ag-grid-angular';
 import { ListButtonComponent } from './list-button/list-button.component';
 import { StatusDropdownComponent } from './status-dropdown/status-dropdown.component';
+import { CheckPasswordDirective } from './register-form/check-password.directive';
+import { EditBookingComponent } from './edit-booking/edit-booking.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { StatusDropdownComponent } from './status-dropdown/status-dropdown.compo
     OrderListComponent,
     ListButtonComponent,
     StatusDropdownComponent,
+    CheckPasswordDirective,
+    EditBookingComponent,
   ],
   imports: [
     BrowserModule,

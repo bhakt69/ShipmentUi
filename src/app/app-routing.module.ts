@@ -7,6 +7,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { TrackingListComponent } from './tracking-list/tracking-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { EditBookingComponent } from './edit-booking/edit-booking.component';
 
 const routes: Routes = [
   {path : '', component : HomePageComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path : 'register', component : RegisterFormComponent},
   {path : 'login',component : LoginFormComponent},
   {path : 'tracking-list', component : TrackingListComponent},
-  {path : 'all-orders', component: OrderListComponent}
+  {path : 'all-orders', component: OrderListComponent},
+  {path : 'EditBooking', component:EditBookingComponent}
 ];
 
 @NgModule({

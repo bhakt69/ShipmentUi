@@ -5,22 +5,6 @@ import { User } from '../model/user';
 import { UserService } from '../service/user.service';
 import { ToastrService } from 'ngx-toastr';
 
-function validatePassword(): ValidatorFn {
-  return (control: AbstractControl) => {
-    let isValid = false;
-    if (control && control instanceof FormGroup) {
-      let group = control as FormGroup;
-      if (group.controls['password'] && group.controls['passwordconf']) {
-        isValid = group.controls['password'].value == group.controls['passwordconf'].value;
-      }
-    }
-    if (isValid) {
-      return null;
-    } else {
-      return { 'passwordCheck': 'failed' }
-    }
-  }
-}
 
 @Component({
   selector: 'app-register-form',
@@ -45,7 +29,8 @@ model:User={
   email: '',
   address: '',
   password: '',
-  userid_pk: 0
+  userid_pk: 0,
+  passwordconf: ''
 };
 ngOnInit(){    
 }

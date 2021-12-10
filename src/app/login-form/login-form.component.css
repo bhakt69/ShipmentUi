@@ -9,6 +9,11 @@ list-type-ulli, .socials {
   margin: 0;
   padding: 0; }
 
+  .backtohome i{
+    margin-left: 790px;
+    margin-top: 10px;
+    font-size: 25px;
+}
 
 a:focus, a:active {
   text-decoration: none;

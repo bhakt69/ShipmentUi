@@ -3,7 +3,7 @@
     width: 260px;
     padding: 10px;
     text-align: center;
-    margin-top: -5px;
+    margin-top: -15px;
 }
 
 .mycss2{
@@ -12,4 +12,10 @@
     font-size: 15px;
     font-weight: 600;
 
+}
+
+.CreateBooking h1{
+    margin-left: 450px;
+    margin-top: -70px;
+    color: black;
 }

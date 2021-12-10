@@ -3,13 +3,17 @@
  <!-- Sign up form -->
  <section class="signup">
   <div class="container">
+    <div class="backtohome">
+      <a href="/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+    </div>
       <div class="signup-content">
           <div class="signup-form">
               <h2 class="form-title">Sign up</h2>
                 <form  role="form" #userRegister="ngForm" (ngSubmit)="userRegister.form.valid && onFormSubmit()" method="POST">
+                 
                   <div class="form-group">
                       <label for="firstName"><i aria-hidden="true" class="fa fa-user"></i></label>
-                      <input type="text" name="firstName" id="name" placeholder="First Name"  [(ngModel)]="model.firstName"  [ngClass]="{'invalid-data': firstName.invalid && userRegister.submitted, 'valid-data':firstName.valid && userRegister.submitted}"
+                      <input type="text" name="firstName" id="name" placeholder="Enter First Name"  [(ngModel)]="model.firstName"  [ngClass]="{'invalid-data': firstName.invalid && userRegister.submitted, 'valid-data':firstName.valid && userRegister.submitted}"
                       required name="firstName"  #firstName="ngModel" maxlength="30"  pattern="[a-zA-Z][a-zA-Z ]+" ngModel>
                       <div *ngIf=" firstName.touched && firstName.invalid" class="alert alert-danger" >
                         <div  *ngIf="firstName.errors?.['required']">
@@ -82,6 +86,7 @@
             
                     </div>
                   </div>
+                  <!--<div ngModelGroup="passwords" #passwords="ngModelGroup" appCheckPassword>
                   <div class="form-group">
                       <label for="password"><i aria-hidden="true" class="fa fa-lock"></i></label>
                       <input type="password" name="password" id="pass" placeholder="Enter Password"  [(ngModel)]="model.password"  [ngClass]="{'invalid-data': password.invalid && userRegister.submitted, 'valid-data':password.valid && userRegister.submitted}"
@@ -103,15 +108,35 @@
                     <div  *ngIf="passwordconf.errors?.['required']">
                        Please Confirm Password.
                     </div>
-                    <div  *ngIf="model.passwordconf !== model.password">
-                        Password and Confirm Password does not match.
+                    <div *ngIf="passwords.errors?.['passwordCheck'] ">
+                      Passwords do not match.
                     </div>
-                  
                 </div>
                   </div>
-                  <div class="form-group form-button">
-                      <input type="submit" name="signup" id="signup" class="form-submit" value="Register"  disabled="!userRegister.valid"/>
+                 </div>-->
+                 <div ngModelGroup="passwords" #passwords="ngModelGroup" appCheckPassword>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1"><i aria-hidden="true" class="fa fa-lock"></i></label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password" #passwordA="ngModel" name="passwordA"
+                     required id="passwordA" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" [(ngModel)]="model.password">
+                     <div *ngIf="passwordA.errors?.['pattern']" class="alert alert-danger">
+                      Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character.
+                    </div>
                   </div>
+                  <div class="form-group mt-1">
+                    <label for="exampleInputPassword2"><i aria-hidden="true" class="fa fa-lock"></i></label>
+                    <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" class="form-control" id="exampleInputPassword2" placeholder="Enter Confirm Password" #passwordB="ngModel" name="passwordB"
+                     required id="passwordB" email [(ngModel)]="model.passwordconf">
+                <div *ngIf="passwordB.invalid && (passwordA.dirty || passwordA.touched)" class="alert alert-danger">
+                  Please confirm your password.
+                </div>
+                <div *ngIf="passwords.errors?.['passwordCheck'] && (passwordB.dirty || passwordB.touched)" class="alert alert-danger">
+                  Passwords do not match.
+                </div>
+             </div>
+                 </div>
+                      <button type="submit"  name="signup" id="signup" value="Register" class="form-submit btn-primary">Register</button>
+                  
               </form>
           </div>
           <div class="signup-image">
