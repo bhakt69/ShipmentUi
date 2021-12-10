@@ -32,11 +32,12 @@ export class StatusDropdownComponent implements OnInit, AfterViewInit  {
 
 
   onChange($event: any, selectedValue: any) {
+    // console.log(this.params.node.data.bookingId);
     if (this.params.onChange instanceof Function) {
       const params = {
         event: $event,
         selectedValue: selectedValue,
-        rowData: this.params.node.data
+        rowData: this.params.node.data.bookingId
       }
       this.params.onChange(params);
     }

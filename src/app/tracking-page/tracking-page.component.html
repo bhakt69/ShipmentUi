@@ -1,5 +1,5 @@
 <app-header></app-header>
-<main>
+<main style="padding: 44px 0px;">
     <div class="tracking-area pt-95 pb-115">
         <div class="container">
             <div class="row justify-content-center">
@@ -12,7 +12,7 @@
                             <button class="btn red-btn">Tracking</button>
                         </form>
 
-                        <div class="tracking-list" id="status-icon">
+                        <div class="tracking-list" id="status-icon" *ngIf="stringifiedData">
                             <ul>
                                 <li [class.active]="isDispatched()">
                                     <div class="tracking-list-icon">

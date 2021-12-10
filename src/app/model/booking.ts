@@ -19,3 +19,8 @@ export interface Booking {
     userInstruction: string
     bookingDate: string
 }
+
+export interface Status{
+    bookingId: number
+    status: string
+}

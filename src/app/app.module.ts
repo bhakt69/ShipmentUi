@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth.interceptor';
 import { AgGridModule } from 'ag-grid-angular';
+import { BookingCompleteComponent } from './booking-complete/booking-complete.component';
 import { ListButtonComponent } from './list-button/list-button.component';
 import { StatusDropdownComponent } from './status-dropdown/status-dropdown.component';
 import { CheckPasswordDirective } from './register-form/check-password.directive';
@@ -43,8 +44,12 @@ import { EditBookingComponent } from './edit-booking/edit-booking.component';
     OrderListComponent,
     ListButtonComponent,
     StatusDropdownComponent,
+<<<<<<< Updated upstream
     CheckPasswordDirective,
     EditBookingComponent,
+=======
+    BookingCompleteComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

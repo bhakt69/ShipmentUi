@@ -16,6 +16,7 @@ export class TrackingPageComponent implements OnInit{
   val: number = 0;
   stringifiedData: any;
   trackingId: any;
+  orderStatus: any;
 
   
   constructor(private trackingService: TrackingService,
@@ -46,7 +47,20 @@ export class TrackingPageComponent implements OnInit{
       (response: any) => {
         this.toastr.clear();
         this.stringifiedData = Array.of(response);
-        // console.log(this.stringifiedData);
+        this.orderStatus = this.stringifiedData[0].status;
+        
+        if(this.orderStatus == 'BOOKED'){
+          this.val = 1;
+        }
+        if(this.orderStatus == 'DISPATCHED'){
+          this.val = 2;
+        }
+        if(this.orderStatus == 'OUT'){
+          this.val = 3;
+        }
+        if(this.orderStatus == 'DELIVERED'){
+          this.val = 4;
+        }
       },
       (error: HttpErrorResponse) => {
         this.toastr.clear();
@@ -57,28 +71,35 @@ export class TrackingPageComponent implements OnInit{
   }
 
 
-  isDispatched(){
+  isDispatched(val = false){
     if(this.val == 1){
       return true;
+    }else{
+      return false;
     }
-    else return false;
   }
-  isDeparted(){
+  isDeparted(val = false){
     if(this.val == 2){
       return true;
+    }else{
+      return false;
     }
-    else return false;
   }
-  isDestined(){
+  isDestined(val = false){
     if(this.val == 3){
       return true;
+    }else{
+      return false;
     }
-    else return false;
   }
-  isSuccessful(){
+  isSuccessful(val = false){
     if(this.val == 4){
       return true;
+    }else{
+      return false;
     }
-    else return false;
   }
+
+
+
 }

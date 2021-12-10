@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Booking } from '../model/booking';
+import { Booking, Status } from '../model/booking';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,14 @@ export class BookingService {
     return this.http.delete<any>(this.baseUrl + '/booking/delete/'+ bookingId);
   }
 
+<<<<<<< Updated upstream
   public editBooking(booking: Booking): Observable<Booking> {
     return this.http.post<Booking>( this.baseUrl + '/booking/edit', booking);
   }
 
+=======
+  public editBookingStatus(bookingId: number, bookingStatus: string): Observable<Status> {
+    return this.http.get<Status>(this.baseUrl + '/booking/editStatus?bookingId=' + bookingId + '&status=' + bookingStatus);
+  }
+>>>>>>> Stashed changes
 }

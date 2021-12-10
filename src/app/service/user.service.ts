@@ -25,6 +25,5 @@ export class UserService {
   public logoutUser(){
     localStorage.removeItem("id_token");
   }
-
-
+  
 }
