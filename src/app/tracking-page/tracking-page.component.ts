@@ -72,28 +72,28 @@ export class TrackingPageComponent implements OnInit{
 
 
   isDispatched(val = false){
-    if(this.val == 1){
+    if(this.val >= 1){
       return true;
     }else{
       return false;
     }
   }
   isDeparted(val = false){
-    if(this.val == 2){
+    if(this.val >= 2){
       return true;
     }else{
       return false;
     }
   }
   isDestined(val = false){
-    if(this.val == 3){
+    if(this.val >= 3){
       return true;
     }else{
       return false;
     }
   }
   isSuccessful(val = false){
-    if(this.val == 4){
+    if(this.val >= 4){
       return true;
     }else{
       return false;

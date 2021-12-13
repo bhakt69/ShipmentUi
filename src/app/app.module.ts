@@ -56,7 +56,7 @@ import { CheckPasswordDirective } from './register-form/check-password.directive
     DataTablesModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    AgGridModule.withComponents([ListButtonComponent, StatusDropdownComponent]),
+    AgGridModule.withComponents([ListButtonComponent, StatusDropdownComponent, BookingModalComponent]),
   ],
   providers: [
     TrackingService,
