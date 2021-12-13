@@ -4,7 +4,11 @@ import { BookingService } from '../service/booking.service';
 import { ToastrService } from 'ngx-toastr';
 import { ListButtonComponent } from '../list-button/list-button.component';
 import { StatusDropdownComponent } from '../status-dropdown/status-dropdown.component';
+<<<<<<< Updated upstream
 import { BookingModalComponent } from '../booking-modal/booking-modal.component';
+=======
+import * as moment from 'moment';
+>>>>>>> Stashed changes
 
 
 
@@ -111,7 +115,8 @@ export class OrderListComponent{
         field: "bookingDate",
         width: 250,
         sortable: true,
-        sortingOrder: ['asc', 'desc']
+        sortingOrder: ['asc', 'desc'],
+        cellRenderer:(data: { bookingDate: moment.MomentInput; }) =>{ return moment(data.bookingDate).format('DD/MM/YYYY')}
       },
       {
         headerName: "Receiver Mobile",
