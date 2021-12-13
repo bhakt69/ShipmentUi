@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation,AfterViewInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { Booking } from '../model/booking';
+import { BookingService } from '../service/booking.service';
 
 @Component({
   selector: 'app-booking-modal',
@@ -16,7 +18,6 @@ export class BookingModalComponent implements OnInit,AfterViewInit{
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    console.log(this.params.node.data)
     this.model.senderName = this.params.node.data.senderName;
     this.model.senderAddress = this.params.node.data.senderAddress;
     this.model.senderCityName = this.params.node.data.senderCityName;
@@ -32,6 +33,7 @@ export class BookingModalComponent implements OnInit,AfterViewInit{
     this.model.category = this.params.node.data.category;
     this.model.priority = this.params.node.data.priority;
     this.model.userInstruction = this.params.node.data.userInstruction;
+    this.model.bookingId = this.params.node.data.bookingId;
   }
 
   agInit(params: any): void {
@@ -65,7 +67,11 @@ export class BookingModalComponent implements OnInit,AfterViewInit{
     bookingDate: ''
   };
   
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private bookingService: BookingService,
+    private toastr: ToastrService
+    ) {}
 
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'exampleModalLong'}).result.then((result) => {
@@ -86,7 +92,15 @@ export class BookingModalComponent implements OnInit,AfterViewInit{
   }
 
   onFormSubmit() {
-    alert('in');
+    console.log(this.model);
+    this.bookingService.editShipment(this.model).subscribe(
+      (response: any) => {
+        this.toastr.success('Changes Saved', 'Booking Modified');
+      },
+      (error: any) => {
+        this.toastr.error(error.message, 'Booking Edit Failed');
+      }
+    );
   }
 
   

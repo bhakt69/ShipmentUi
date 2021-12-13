@@ -26,11 +26,11 @@ export class BookingService {
   }
 
 
-  public editBooking(booking: Booking): Observable<Booking> {
-    return this.http.post<Booking>( this.baseUrl + '/booking/edit', booking);
-  }
-
   public changeBookingStatus(bookingId: number, bookingStatus: string): Observable<any> {
     return this.http.post<any>(this.baseUrl + '/booking/editStatus?bookingId=' + bookingId + '&status=' + bookingStatus, '');
+  }
+
+  public editShipment(booking: Booking): Observable<Booking> {
+    return this.http.put<Booking>(this.baseUrl + '/booking/editShipment', booking);
   }
 }

@@ -8,6 +8,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { TrackingListComponent } from './tracking-list/tracking-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { BookingCompleteComponent } from './booking-complete/booking-complete.component';
+import { BookingModalComponent } from './booking-modal/booking-modal.component';
 
 const routes: Routes = [
   {path : '', component : HomePageComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path : 'login',component : LoginFormComponent},
   {path : 'tracking-list', component : TrackingListComponent},
   {path : 'all-orders', component: OrderListComponent},
-  {path : 'booking/completed', component: BookingCompleteComponent}
+  {path : 'booking/completed', component: BookingCompleteComponent},
+  {path : 'booking/modal', component: BookingModalComponent}
 ];
 
 @NgModule({
