@@ -60,6 +60,8 @@ export class BookingFormComponent implements OnInit {
 
   ngOnInit() {}
 
+  
+
   onFormSubmit() {
     this.bookingService.createBooking(this.model).subscribe(
       (response: any) => {

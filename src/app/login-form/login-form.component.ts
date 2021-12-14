@@ -6,20 +6,36 @@ import * as moment from "moment";
 import { HttpClient } from '@angular/common/http';
 import { User, User2 } from '../model/user';
 import { Router } from '@angular/router';
+import { TokenStorageService } from '../service/token-storage.service';
+
+const TOKEN_KEY = 'auth-token';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
-export class LoginFormComponent implements OnInit {
 
-  
+export class LoginFormComponent implements OnInit {
+    
+    isLoggedIn= false;
+    isLoginFailed = false;
+    errorMessage = '';
+    roles: string[] = [];
+    
+
+    ngOnInit(): void {
+      if (this.tokenStorage.getToken()) {
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUserRole().roles;
+      }
+    }
 
   constructor(
     private userService : UserService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private tokenStorage: TokenStorageService,
   ) { }
 
   model:User={
@@ -32,9 +48,6 @@ export class LoginFormComponent implements OnInit {
     password: '',
     userid_pk: 0
   };
-
-  ngOnInit(): void {
-  }
   
   
   onSubmit(loginForm:NgForm){
@@ -44,7 +57,11 @@ export class LoginFormComponent implements OnInit {
   login( values: any ) {
     this.userService.loginUser(values).subscribe(
       (response: any) => {
-        this.setSession(response.token);
+        this.tokenStorage.saveToken(response.token);
+        this.tokenStorage.saveUserRole(response);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        // this.roles = this.tokenStorage.getUser().roles;
         this.toastr.success('Login Success', 'Success');
         this.router.navigateByUrl('home');
       },
@@ -52,35 +69,10 @@ export class LoginFormComponent implements OnInit {
         this.toastr.error(error.error.errorMessage, 'Login Failed');
       }
     );
+  }         
+
+  reloadPage(): void {
+    window.location.reload();
   }
-
-
-  private setSession(token: any) {
-    localStorage.setItem('id_token', token);
-  }          
-
-  logout() {
-      localStorage.removeItem("id_token");
-  }
-
-  isLoggedIn() {
-    if(localStorage.getItem("id_token")){
-      return true;
-    }
-    else{
-      return false;
-    }
-      // return moment().isBefore(this.getExpiration());
-  }
-
-  // isLoggedOut() {
-  //     return !this.isLoggedIn();
-  // }
-
-  // getExpiration() {
-  //     const expiration = localStorage.getItem("expires_at");
-  //     const expiresAt = JSON.parse(expiration);
-  //     return moment(expiresAt);
-  // }
-
+  
 }

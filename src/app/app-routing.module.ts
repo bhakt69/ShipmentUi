@@ -11,7 +11,7 @@ import { BookingCompleteComponent } from './booking-complete/booking-complete.co
 import { BookingModalComponent } from './booking-modal/booking-modal.component';
 
 const routes: Routes = [
-  {path : '', component : HomePageComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path : 'home', component : HomePageComponent},
   {path : 'tracking', component : TrackingPageComponent},
   {path : 'booking', component : BookingFormComponent},

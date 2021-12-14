@@ -28,9 +28,9 @@
                             <nav id="mobile-menu">
                                 <ul>
                                     <li class="active"><a routerLink="/home" routerLinkActive="active">Home</a></li>
-                                    <li *ngIf="isLoggedIn()"><a routerLink="/booking" routerLinkActive="active">Create Booking</a></li>
+                                    <li *ngIf="showUserRoutes || showAdminRoutes"><a routerLink="/booking" routerLinkActive="active">Create Booking</a></li>
                                     <li ><a routerLink="/tracking" routerLinkActive="active">Tracking</a></li>
-                                    <li *ngIf="isLoggedIn()"><a routerLink="/all-orders" routerLinkActive="active">All Orders</a></li>               
+                                    <li *ngIf="showAdminRoutes"><a routerLink="/all-orders" routerLinkActive="active">All Orders</a></li>
                                 </ul>
                             </nav>
                         </div>

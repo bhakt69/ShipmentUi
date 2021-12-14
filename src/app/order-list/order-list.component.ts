@@ -4,11 +4,8 @@ import { BookingService } from '../service/booking.service';
 import { ToastrService } from 'ngx-toastr';
 import { ListButtonComponent } from '../list-button/list-button.component';
 import { StatusDropdownComponent } from '../status-dropdown/status-dropdown.component';
-
 import { BookingModalComponent } from '../booking-modal/booking-modal.component';
 import * as moment from 'moment';
-
-
 
 
 
