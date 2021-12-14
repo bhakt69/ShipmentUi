@@ -154,7 +154,11 @@ export class OrderListComponent{
         width: 500,
         editable: false,
         cellRenderer: 'listbuttonComponent',
-     
+        cellRendererParams: {
+          onClick: this.onDeleteClick.bind(this),
+          label: 'Delete'
+    
+        }
       },
     ]
 
@@ -198,7 +202,19 @@ export class OrderListComponent{
         this.toastr.error('Failed', 'Error');
       }
     );
+  }
   
+  onDeleteClick(e1: any) {
+    // console.log(e1.rowData.bookingId);
+    
+    this.bookingservice.deleteBooking(e1.rowData.bookingId).subscribe(
+      (response: any) => {
+        this.toastr.success('Booking Deleted', 'Success');
+      },
+      (error: any) => {
+        this.toastr.error('Delete Failed', 'Error');
+      }
+    );
   }
 
 }
