@@ -4,11 +4,11 @@ import { BookingService } from '../service/booking.service';
 import { ToastrService } from 'ngx-toastr';
 import { ListButtonComponent } from '../list-button/list-button.component';
 import { StatusDropdownComponent } from '../status-dropdown/status-dropdown.component';
-<<<<<<< Updated upstream
+
 import { BookingModalComponent } from '../booking-modal/booking-modal.component';
-=======
 import * as moment from 'moment';
->>>>>>> Stashed changes
+
+
 
 
 
@@ -146,17 +146,15 @@ export class OrderListComponent{
         headerName: "Edit",
         width: 500,
         editable: false,
-        cellRenderer: 'bookingModalComponent'        
+        cellRenderer: 'bookingModalComponent'  ,
+           
       },
       {
         headerName: "Delete",
         width: 500,
         editable: false,
         cellRenderer: 'listbuttonComponent',
-        cellRendererParams: {
-          onClick: this.onDeleteClick.bind(this),
-          label: 'Delete'
-        }
+     
       },
     ]
 
@@ -200,19 +198,7 @@ export class OrderListComponent{
         this.toastr.error('Failed', 'Error');
       }
     );
-  }
   
-  onDeleteClick(e1: any) {
-    // console.log(e1.rowData.bookingId);
-    
-    this.bookingservice.deleteBooking(e1.rowData.bookingId).subscribe(
-      (response: any) => {
-        this.toastr.success('Booking Deleted', 'Success');
-      },
-      (error: any) => {
-        this.toastr.error('Delete Failed', 'Error');
-      }
-    );
   }
 
 }
