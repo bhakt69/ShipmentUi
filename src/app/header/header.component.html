@@ -27,11 +27,11 @@
                         <div class="main-menu">
                             <nav id="mobile-menu">
                                 <ul>
-                                    <li class="active"><a routerLink="/home" routerLinkActive="active">Home</a></li>
-                                    <li *ngIf="showUserRoutes || showAdminRoutes"><a routerLink="/booking" routerLinkActive="active">Create Booking</a></li>
-                                    <li ><a routerLink="/tracking" routerLinkActive="active">Tracking</a></li>
-                                    <li *ngIf="showUserRoutes"><a routerLink="/all-orders" routerLinkActive="active">My Orders</a></li>
-                                    <li *ngIf="showAdminRoutes"><a routerLink="/all-orders" routerLinkActive="active">All Orders</a></li>
+                                    <li routerLink="/home" routerLinkActive="active"><a>Home</a></li>
+                                    <li routerLink="/booking" routerLinkActive="active" *ngIf="showUserRoutes || showAdminRoutes"><a routerLink="/booking" routerLinkActive="active">Create Booking</a></li>
+                                    <li routerLink="/tracking" routerLinkActive="active" ><a routerLink="/tracking">Tracking</a></li>
+                                    <li routerLink="/all-orders" routerLinkActive="active" *ngIf="showUserRoutes"><a>My Orders</a></li>
+                                    <li routerLink="/all-orders" routerLinkActive="active" *ngIf="showAdminRoutes"><a>All Orders</a></li>
                                 </ul>
                             </nav>
                         </div>

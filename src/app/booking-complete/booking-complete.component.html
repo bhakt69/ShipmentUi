@@ -1,15 +1,25 @@
 <app-header></app-header>
+
 <main style="padding: 180px 0px;">
-    <div class="tracking-area pt-95 pb- ">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8 col-lg-10">
-                    <div class="tracking-id-info text-center">
-                        <p >Your tracking id is : {{ trackingId }}</p>
-                    </div>
-                </div>
-            </div>
+  <section class="newsletter-area">
+    <div class="container">
+      <div class="col-sm-8 text-center mx-auto card newsletter-wrap">
+        <div class="card-header">
+          Booking Confirmed
         </div>
+        <div class="card-body">
+          <h5 class="card-title">You have successfully booked your package</h5>
+          <p class="card-text">To track the status of your parcel, use the tracking Id below : </p>
+          {{ trackingId }}
+        </div>
+        <div class="card-footer text-muted">
+          Click <a href="/tracking">here</a> to track your package.
+        </div>
+      </div>
     </div>
+  </section>
+  
 </main>
+<p class="text-center"><span class="text-danger">Note : </span>Your tracking id is generated only once and cannot be retrieved if lost. Please note it down carefully.</p>
+
 <app-footer></app-footer>
