@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { User } from '../model/user';
 import { TokenStorageService } from '../service/token-storage.service';
 import { UserService } from '../service/user.service';
 
@@ -22,21 +23,19 @@ export class HeaderComponent implements OnInit{
 
   showUserRoutes: boolean;
   showAdminRoutes: boolean;
-  user: any;
+  userProfileName: string;
 
   ngOnInit(): void {
     if(this.isLoggedIn()){
       if(this.tokenStorage.getUserRole() == 'User'){
         this.showUserRoutes = true;
-        this.showAdminRoutes = false;
-        
+        this.showAdminRoutes = false;        
       }
       else{
         this.showAdminRoutes = true;
         this.showUserRoutes = false;
-        console.log('out')
       }
-      console.log(this.tokenStorage.getUserRole() == 'User')
+      this.getUserProfile();
     }
   }
 
@@ -58,10 +57,7 @@ export class HeaderComponent implements OnInit{
   public getUserProfile(){
     this.userService.getProfile().subscribe(
       (response: any) => {
-        console.log(response);
-      },
-      (error: any) => {
-        this.toastr.error('Error', 'Error');
+        this.userProfileName = response.firstName + ' ' +response.lastName;
       }
     );
   }

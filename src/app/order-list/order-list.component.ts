@@ -31,6 +31,8 @@ export class OrderListComponent{
   //ng-grid from here
   public gridApi: any;
   public gridColumnApi:any;
+  private userColumnDefs: any;
+  private adminColumnDefs: any;
   public columnDefs: any;
   public sortingOrder: any;
   public defaultColDef: any;
@@ -53,7 +55,7 @@ export class OrderListComponent{
       bookingModalComponent: BookingModalComponent
     };
 
-    this.columnDefs=[
+    this.adminColumnDefs=[
       {
         headerName: "Name",
         field:"senderName",
@@ -139,6 +141,7 @@ export class OrderListComponent{
         field: "status",
         width: 750,
         editable: false,
+        minWidth: 170,
         cellRenderer: 'statusDropdownComponent',
         cellRendererParams: {
           onChange: this.onStatusClick.bind(this),
@@ -161,8 +164,98 @@ export class OrderListComponent{
           label: 'Delete'
     
         }
-      },
+      }
     ]
+
+    this.userColumnDefs=[
+      {
+        headerName: "Name",
+        field:"senderName",
+        width: 150,
+        sortable: true,
+        sortingOrder:['asc', 'desc', 'null'],
+        headerCheckboxSelection: false,
+      },
+      {
+        headerName: "Sender City",
+        field: "senderCityName",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Sender Email",
+        field: "senderEmailId",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Sender Mobile",
+        field: "senderMobileNumber",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Sender Pincode",
+        field: "senderPinCode",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver Name",
+        field: "receiverName",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver City",
+        field: "receiverCityName",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver Email",
+        field: "receiverEmailId",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      
+      {
+        headerName: "Booked Date",
+        field: "bookingDate",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc'],
+        cellRenderer:(data: { bookingDate: moment.MomentInput; }) =>{ return moment(data.bookingDate).format('DD/MM/YYYY')}
+      },
+      {
+        headerName: "Receiver Mobile",
+        field: "receiverMobileNumber",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
+        headerName: "Receiver Pincode",
+        field: "receiverPinCode",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      }
+    ]
+
+    if(this.tokenStorage.getUserRole() == 'User'){
+      this.columnDefs = this.userColumnDefs;
+    }
+    else{
+      this.columnDefs = this.adminColumnDefs;
+    }
 
     this.sortingOrder = ["asc", "desc", "null"];
     this.paginationPageSize = 10;
@@ -170,12 +263,11 @@ export class OrderListComponent{
       return '[' + params.value.toLocaleString() + ']';
     };
     this.defaultColDef = {
-      editable: true,
+      editable: false,
       sortable: true,
       resizable: true,
       filter: true,
       flex: 1,
-      minWidth: 160,
     };
   }
   
@@ -216,8 +308,6 @@ export class OrderListComponent{
   }
   
   onDeleteClick(e1: any) {
-    // console.log(e1.rowData.bookingId);
-    
     this.bookingservice.deleteBooking(e1.rowData.bookingId).subscribe(
       (response: any) => {
         this.toastr.success('Booking Deleted', 'Success');
