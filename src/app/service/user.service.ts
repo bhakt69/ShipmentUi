@@ -25,5 +25,9 @@ export class UserService {
   public logoutUser(){
     localStorage.removeItem("id_token");
   }
+
+  public getProfile():Observable<User>{
+    return this.http.get<User>(this.baseUrl + '/user/getProfile');
+  }
   
 }

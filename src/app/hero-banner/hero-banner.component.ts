@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { TrackingService } from '../service/tracking-service.service';
 
 @Component({
   selector: 'app-hero-banner',
@@ -10,7 +12,9 @@ import { Router } from '@angular/router';
 export class HeroBannerComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private trackingService: TrackingService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -18,8 +22,15 @@ export class HeroBannerComponent implements OnInit {
 
 
   onSubmit(f : NgForm){
-    
-    this.router.navigate(['/tracking'], { queryParams: { trackingId: f.value['trackingId'] } }); 
+    this.trackingService.trackPackage(f.value['trackingId']).subscribe(
+      (response: any) => {
+        this.router.navigate(['/tracking'], { queryParams: { trackingId: f.value['trackingId'] } }); 
+      },
+      (error: any) => {
+        this.toastr.clear();
+        this.toastr.error(error.error.errorMessage, 'Error');
+      }
+    );
   }
 
 }

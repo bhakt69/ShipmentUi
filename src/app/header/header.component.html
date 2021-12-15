@@ -30,6 +30,7 @@
                                     <li class="active"><a routerLink="/home" routerLinkActive="active">Home</a></li>
                                     <li *ngIf="showUserRoutes || showAdminRoutes"><a routerLink="/booking" routerLinkActive="active">Create Booking</a></li>
                                     <li ><a routerLink="/tracking" routerLinkActive="active">Tracking</a></li>
+                                    <li *ngIf="showUserRoutes"><a routerLink="/all-orders" routerLinkActive="active">My Orders</a></li>
                                     <li *ngIf="showAdminRoutes"><a routerLink="/all-orders" routerLinkActive="active">All Orders</a></li>
                                 </ul>
                             </nav>
@@ -39,8 +40,7 @@
                             style="margin: 50px; padding: 10px"
                             type="button"
                             class="btn btn-primary">
-                            <a href="javascript:void(0);">Login / Register</a>
-                            
+                            <a href="javascript:void(0);">Login / Register</a>                            
                             </button>
                         </div>
                         
@@ -53,25 +53,15 @@
                             </button>
                         </div>
                         
-                        <div class="profilecss">
+                        <div *ngIf="isLoggedIn()" class="profilecss text-center">
                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                           <!-- <h5> {{  }}</h5> -->
                         </div>
 
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="mobile-menu"></div>
-                </div>
-            </div>
-            <!-- Modal Search -->
-            <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <form>
-                            <input type="text" placeholder="Search here...">
-                            <button><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
                 </div>
             </div>
             

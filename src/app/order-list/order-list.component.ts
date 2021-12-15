@@ -6,6 +6,8 @@ import { ListButtonComponent } from '../list-button/list-button.component';
 import { StatusDropdownComponent } from '../status-dropdown/status-dropdown.component';
 import { BookingModalComponent } from '../booking-modal/booking-modal.component';
 import * as moment from 'moment';
+import { environment } from 'src/environments/environment';
+import { TokenStorageService } from '../service/token-storage.service';
 
 
 
@@ -24,6 +26,8 @@ export class OrderListComponent{
 
   frameworkComponents: any;
 
+  private baseUrl = environment.usersUrl;
+
   //ng-grid from here
   public gridApi: any;
   public gridColumnApi:any;
@@ -38,7 +42,8 @@ export class OrderListComponent{
   constructor(
     private http: HttpClient,
     private bookingservice: BookingService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private tokenStorage: TokenStorageService,
     ) {
 
       
@@ -179,10 +184,19 @@ export class OrderListComponent{
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
 
-    this.http.get("http://localhost:8080/booking/getAllBookingInfo")
-    .subscribe(response => {
-      params.api.setRowData(response);
-    });
+    if(this.tokenStorage.getUserRole() == 'User'){
+      this.http.get( this.baseUrl + "/booking/getAllBookingByUser")
+      .subscribe(response => {
+        params.api.setRowData(response);
+      });
+    }
+    if(this.tokenStorage.getUserRole() == 'Admin'){
+      this.http.get( this.baseUrl + "/booking/getAllBookingInfo")
+      .subscribe(response => {
+        params.api.setRowData(response);
+      });
+    }
+    
   }
 
   onPageSizeChanged() {

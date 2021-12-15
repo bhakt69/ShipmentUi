@@ -51,10 +51,10 @@
                         <div class="card" *ngIf="stringifiedData">
                             <div class="title" >Tracking Details</div>                            
                             <div class="pricing" *ngFor="let item of stringifiedData">
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-6"> <span>Booking Id</span> </div>
                                     <div class="col-6"> <span>{{ item.bookingId }}</span> </div>
-                                </div>
+                                </div> -->
                                 <div class="row">
                                     <div class="col-6"> <span>Booking Date</span> </div>
                                     <div class="col-6"> <span>{{ item.bookingDate.slice(0,10) }}</span> </div>

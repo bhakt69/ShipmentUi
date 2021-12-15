@@ -21,8 +21,8 @@ export class TrackingPageComponent implements OnInit{
   
   constructor(private trackingService: TrackingService,
     private toastr: ToastrService,
-    private Activatedroute:ActivatedRoute,
-    private router:Router){    
+    private Activatedroute:ActivatedRoute
+    ){    
   }
 
   ngOnInit(){
@@ -32,7 +32,19 @@ export class TrackingPageComponent implements OnInit{
         (response: any) => {
           this.toastr.clear();
           this.stringifiedData = Array.of(response);
-          // console.log(this.stringifiedData);
+          this.orderStatus = this.stringifiedData[0].status;
+          if(this.orderStatus == 'BOOKED'){
+            this.val = 1;
+          }
+          if(this.orderStatus == 'DISPATCHED'){
+            this.val = 2;
+          }
+          if(this.orderStatus == 'OUT'){
+            this.val = 3;
+          }
+          if(this.orderStatus == 'DELIVERED'){
+            this.val = 4;
+          }
         },
         (error: HttpErrorResponse) => {
           this.toastr.clear();

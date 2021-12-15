@@ -58,7 +58,7 @@ export class LoginFormComponent implements OnInit {
     this.userService.loginUser(values).subscribe(
       (response: any) => {
         this.tokenStorage.saveToken(response.token);
-        this.tokenStorage.saveUserRole(response);
+        this.tokenStorage.saveUserRole(response.roleName);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         // this.roles = this.tokenStorage.getUser().roles;

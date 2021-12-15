@@ -11,10 +11,6 @@ export class TokenStorageService {
 
   constructor() { }
 
-  signOut(): void {
-    localStorage.clear();
-  }
-
   public saveToken(token: string): void {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.setItem(TOKEN_KEY, token);
@@ -24,23 +20,18 @@ export class TokenStorageService {
     return localStorage.getItem(TOKEN_KEY);
   }
 
-  public saveUserRole(user: any): void {
+  public saveUserRole(roleName: any): void {
     localStorage.removeItem(USER_KEY);
-    localStorage.setItem(USER_KEY, JSON.stringify(user));
+    localStorage.setItem(USER_KEY, roleName);
   }
 
   public getUserRole(): any {
-    const user = localStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
-    }
-
-    return {};
+    console.log(localStorage.getItem(USER_KEY))
+    return localStorage.getItem(USER_KEY);
   }
 
   public logout() {
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(USER_KEY);
+    localStorage.clear();
   }
 
   public isLoggedIn(): boolean {
@@ -51,7 +42,4 @@ export class TokenStorageService {
       return false;
     }
   }
-
-
-
 }
