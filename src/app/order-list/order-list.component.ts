@@ -137,6 +137,13 @@ export class OrderListComponent{
         sortingOrder: ['asc', 'desc']
       },
       {
+        headerName: "Tracking Id",
+        field: "trackingId",
+        width: 250,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
+      {
         headerName: "Status",
         field: "status",
         width: 750,
@@ -151,19 +158,13 @@ export class OrderListComponent{
         headerName: "Edit",
         width: 500,
         editable: false,
-        cellRenderer: 'bookingModalComponent'  ,
-           
+        cellRenderer: 'bookingModalComponent',           
       },
       {
         headerName: "Delete",
         width: 500,
         editable: false,
         cellRenderer: 'listbuttonComponent',
-        cellRendererParams: {
-          onClick: this.onDeleteClick.bind(this),
-          label: 'Delete'
-    
-        }
       }
     ]
 
@@ -237,17 +238,23 @@ export class OrderListComponent{
       {
         headerName: "Receiver Mobile",
         field: "receiverMobileNumber",
-        width: 250,
+        width: 100,
         sortable: true,
         sortingOrder: ['asc', 'desc']
       },
       {
         headerName: "Receiver Pincode",
         field: "receiverPinCode",
-        width: 250,
+        width: 100,
         sortable: true,
         sortingOrder: ['asc', 'desc']
-      }
+      },{
+        headerName: "Tracking Id",
+        field: "trackingId",
+        width: 100,
+        sortable: true,
+        sortingOrder: ['asc', 'desc']
+      },
     ]
 
     if(this.tokenStorage.getUserRole() == 'User'){
@@ -268,6 +275,7 @@ export class OrderListComponent{
       resizable: true,
       filter: true,
       flex: 1,
+      minWidth: 75
     };
   }
   
@@ -307,67 +315,5 @@ export class OrderListComponent{
     );
   }
   
-  onDeleteClick(e1: any) {
-    this.bookingservice.deleteBooking(e1.rowData.bookingId).subscribe(
-      (response: any) => {
-        this.toastr.success('Booking Deleted', 'Success');
-      },
-      (error: any) => {
-        this.toastr.error('Delete Failed', 'Error');
-      }
-    );
-  }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// dtOptions: DataTables.Settings = {};
-//   trackings: Tracking[];
-//   private baseUrl = environment.usersUrl;
-
-//   constructor(private http: HttpClient) { }
-
-//   ngOnInit(): void {
-//     const that = this;
-
-//     this.dtOptions = {
-//       // pagingType: 'full_numbers',
-//       pageLength: 10,
-//       serverSide: true,
-//       processing: true,
-//       ajax: (dataTablesParameters: any, callback) => {
-//         that.http
-//           .get<DataTablesResponse>(
-//             this.baseUrl+'/booking/getAllBookingInfo',
-//             dataTablesParameters
-//           ).subscribe(resp => {
-//             // console.log(resp);
-//             callback({
-//               data: resp
-//             });
-//           });
-//       },
-//       columns: [
-//         { data: 'bookingId' },
-//         { data: 'senderName' }, 
-//         // { data: 'senderAddress' },
-//         { data: 'senderMobileNumber' },
-//         { data: 'senderPinCode' },
-//         { data: 'receiverName' },
-//         // { data: 'receiverAddress' },
-//         { data: 'receiverMobileNumber' },
-//         { data: 'receiverPinCode' }]
-//     };
-
-//   }

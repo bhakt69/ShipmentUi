@@ -1,15 +1,15 @@
-<i id="iconcss"class="fa fa-trash"  (click)="onClick($event)"></i>
+<i id="iconcss"class="fa fa-trash"  (click)="onClick(content)"></i>
 
-<!--<ng-template #content let-modal id="exampleModalLong" tabindex="-1" role="dialog">
-    <form class="modal-body" >
+
+<ng-template #content let-modal id="exampleModal" tabindex="-1" role="dialog">
+    <form #deleteBooking="ngForm" (ngSubmit)="onSubmit()" class="modal-body" >
       <div class="container">
         <h1>Delete Booking</h1>
-        <p>Are you sure you want to delete?</p>
-  
+        <p>Are you sure you want to delete?</p>  
         <div class="clearfix">
-          <button type="button" class="cancelbtn">Cancel</button>
-          <button type="button" class="deletebtn">Delete</button>
+          <button type="submit" (click)="onCancel()" class="cancelbtn">Cancel</button>
+          <button type="submit" (click)="onDelete()" class="deletebtn">Delete</button>
         </div>
       </div>
     </form>
-</ng-template>-->
+</ng-template>

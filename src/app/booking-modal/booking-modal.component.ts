@@ -92,7 +92,6 @@ export class BookingModalComponent implements OnInit,AfterViewInit{
   }
 
   onFormSubmit() {
-    console.log(this.model);
     this.bookingService.editShipment(this.model).subscribe(
       (response: any) => {
         this.toastr.success('Changes Saved', 'Booking Modified');
@@ -102,8 +101,6 @@ export class BookingModalComponent implements OnInit,AfterViewInit{
       }
     );
   }
-
-  
 
   onChange(content: any) {
     if (this.params.onChange instanceof Function) {

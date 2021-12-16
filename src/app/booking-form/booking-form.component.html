@@ -15,7 +15,7 @@
                   <div class="shipping-address-form">
                     <div class="shipping-country-box form-group">
                       <label for="from-country">from customer</label>
-                      <input name="senderName" type="text" id="from-country" placeholder="Sender's Name"[(ngModel)]="model.senderName"
+                      <input name="senderName" type="text" id="from-country" placeholder="Sender's Name" [(ngModel)]="model.senderName"
                         [ngClass]="{'invalid-data': senderName.invalid && f.submitted, 'valid-data':senderName.valid && f.submitted}"
                         required name="senderName" pattern="[a-zA-Z][a-zA-Z ]+" maxlength="30" #senderName="ngModel" ngModel>
                         <div *ngIf="senderName.touched && senderName.invalid" class="alert alert-danger">
