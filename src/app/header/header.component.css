@@ -1,8 +1,15 @@
 .profilecss{
-	color:white;
-	font-size:60px;
+	color:orangered;
+	font-size:50px;
 }
-
+.logoimg{
+	margin-left: -60px;
+}
+.logotitle{
+	color: blue;
+    font-size: 20px;
+    margin-left: 45px;
+}
 .mt-5 {
 	margin-top: 5px;
 }

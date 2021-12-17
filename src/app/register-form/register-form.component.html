@@ -1,3 +1,18 @@
+<div class="header-top-wrap purple-bg d-none d-md-block">
+  <div class="container-fluid header-container-p">
+      <div class="row">
+          <div class="col-xl-6 col-lg-7 col-md-6">
+              <div class="header-contact">
+                  <ul>
+                      <li><i class="fas fa-headphones"></i>Call us +91 8989898989</li>
+                      <li><i class="far fa-envelope"></i><a href="mailto: rohit@mail.com" class="__cf_email__" data-cfemail="5f0c2b3e2d2b3e2c341f36313930713c3032">[Send&#160;Email]</a></li>
+                      <li>C21 Business Park</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 <div class="main">
  <!-- Sign up form -->
  <section class="signup">
@@ -14,7 +29,7 @@
                       <label for="firstName"><i aria-hidden="true" class="fa fa-user"></i></label>
                       <input type="text" name="firstName" id="name" placeholder="Enter First Name"  [(ngModel)]="model.firstName"  [ngClass]="{'invalid-data': firstName.invalid && userRegister.submitted, 'valid-data':firstName.valid && userRegister.submitted}"
                       required name="firstName"  #firstName="ngModel" maxlength="30"  pattern="[a-zA-Z][a-zA-Z ]+" ngModel>
-                      <div *ngIf=" firstName.touched && firstName.invalid" class="alert alert-danger" >
+                      <div *ngIf="firstName.invalid &&( firstName.dirty || firstName.touched)" class="alert alert-danger" >
                         <div  *ngIf="firstName.errors?.['required']">
                           First Name is required
                         </div>
@@ -30,7 +45,7 @@
                     <label for="lastName"><i aria-hidden="true" class="fa fa-user"></i></label>
                     <input type="text" name="lastName" id="name" placeholder="Enter Last Name"  [(ngModel)]="model.lastName"  [ngClass]="{'invalid-data': lastName.invalid && userRegister.submitted, 'valid-data':lastName.valid && userRegister.submitted}"
                     required name="lastName" pattern="[a-zA-Z][a-zA-Z ]+" maxlength="30"  #lastName="ngModel" ngModel>
-                    <div *ngIf="lastName.touched && lastName.invalid" class="alert alert-danger">
+                    <div *ngIf="lastName.invalid &&( lastName.dirty || lastName.touched)" class="alert alert-danger">
                       <div  *ngIf="lastName.errors?.['required']">
                        Last Name is required
                       </div>
@@ -46,7 +61,7 @@
                   <label for="contactNumber"><i aria-hidden="true" class="fa fa-phone"></i></label>
                   <input type="text" name="contactNumber" id="name" placeholder="Enter Contact Number"  [(ngModel)]="model.contactNumber"  [ngClass]="{'invalid-data': contactNumber.invalid && userRegister.submitted, 'valid-data':contactNumber.valid && userRegister.submitted}"
                   required name="contactNumber"  #contactNumber="ngModel" maxlength="10" pattern="^[6-9]\d{9}$" ngModel>
-                  <div *ngIf="contactNumber.touched && contactNumber.invalid" class="alert alert-danger">
+                  <div *ngIf="contactNumber.invalid &&( contactNumber.dirty || contactNumber.touched)" class="alert alert-danger">
                     <div  *ngIf="contactNumber.errors?.['required']">
                      Contact Number is required.
                     </div>
@@ -62,7 +77,7 @@
                 <label for="address"><i aria-hidden="true" class="fa fa-location-arrow"></i></label>
                 <input type="text" name="address" id="name" placeholder="Enter Address" maxlength="30"  [(ngModel)]="model.address"  [ngClass]="{'invalid-data': address.invalid && userRegister.submitted, 'valid-data':address.valid && userRegister.submitted}"
                 required name="address"  #address="ngModel" ngModel>
-                <div *ngIf="address.touched && address.invalid" class="alert alert-danger">
+                <div *ngIf="address.invalid &&( address.dirty || address.touched)" class="alert alert-danger">
                   <div  *ngIf="address.errors?.['required']">
                     Address is required
                   </div>
@@ -75,7 +90,7 @@
                       <label for="email"><i aria-hidden="true" class="fa fa-envelope"></i></label>
                       <input type="email" name="email" id="email" placeholder="Enter Email"  [(ngModel)]="model.email"  [ngClass]="{'invalid-data': email.invalid && userRegister.submitted, 'valid-data':email.valid && userRegister.submitted}"
                       required name="email"  #email="ngModel" email ngModel>
-                      <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                      <div *ngIf="email.invalid &&( email.dirty || email.touched)" class="alert alert-danger">
                         <div  *ngIf="email.errors?.['required']">
                             Sender Email Id is required
                         </div>
@@ -118,15 +133,19 @@
                     <label for="exampleInputPassword1"><i aria-hidden="true" class="fa fa-lock"></i></label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password" #passwordA="ngModel" name="passwordA"
                      required id="passwordA" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" [(ngModel)]="model.password">
+                     <div *ngIf="passwordA.invalid && (passwordA.dirty || passwordA.touched)" class="alert alert-danger">
+                       Password is required
+                       </div>
                      <div *ngIf="passwordA.errors?.['pattern']" class="alert alert-danger">
                       Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character.
                     </div>
+               
                   </div>
                   <div class="form-group mt-1">
                     <label for="exampleInputPassword2"><i aria-hidden="true" class="fa fa-lock"></i></label>
                     <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$" class="form-control" id="exampleInputPassword2" placeholder="Enter Confirm Password" #passwordB="ngModel" name="passwordB"
                      required id="passwordB" email [(ngModel)]="model.passwordconf">
-                <div *ngIf="passwordB.invalid && (passwordA.dirty || passwordA.touched)" class="alert alert-danger">
+                <div *ngIf="passwordB.invalid && (passwordB.dirty || passwordB.touched)" class="alert alert-danger">
                   Please confirm your password.
                 </div>
                 <div *ngIf="passwords.errors?.['passwordCheck'] && (passwordB.dirty || passwordB.touched)" class="alert alert-danger">
@@ -146,4 +165,16 @@
       </div>
   </div>
 </section>
+</div>
+<div class="copyright-wrap">
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-lg-12 col-md-12 text-center">
+              <div class="copyright-text">
+                  <p>Copyright© <span>Delivery Express </span> | All Rights Reserved</p>
+              </div>
+          </div>
+          
+      </div>
+  </div>
 </div>
