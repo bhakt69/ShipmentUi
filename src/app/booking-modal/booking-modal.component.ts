@@ -95,6 +95,7 @@ export class BookingModalComponent implements OnInit,AfterViewInit{
     this.bookingService.editShipment(this.model).subscribe(
       (response: any) => {
         this.toastr.success('Changes Saved', 'Booking Modified');
+        this.modalService.dismissAll();
       },
       (error: any) => {
         this.toastr.error(error.message, 'Booking Edit Failed');

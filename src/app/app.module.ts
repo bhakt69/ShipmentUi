@@ -26,6 +26,7 @@ import { BookingCompleteComponent } from './booking-complete/booking-complete.co
 import { ListButtonComponent } from './list-button/list-button.component';
 import { StatusDropdownComponent } from './status-dropdown/status-dropdown.component';
 import { CheckPasswordDirective } from './register-form/check-password.directive';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CheckPasswordDirective } from './register-form/check-password.directive
     StatusDropdownComponent,
     CheckPasswordDirective,
     BookingCompleteComponent,
-    BookingCompleteComponent
+    BookingCompleteComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

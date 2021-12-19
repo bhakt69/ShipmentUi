@@ -296,7 +296,6 @@ export class OrderListComponent{
         params.api.setRowData(response);
       });
     }
-    
   }
 
   onPageSizeChanged() {

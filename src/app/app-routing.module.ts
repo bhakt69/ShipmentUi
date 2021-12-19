@@ -9,6 +9,7 @@ import { TrackingListComponent } from './tracking-list/tracking-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { BookingCompleteComponent } from './booking-complete/booking-complete.component';
 import { BookingModalComponent } from './booking-modal/booking-modal.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -20,7 +21,9 @@ const routes: Routes = [
   {path : 'tracking-list', component : TrackingListComponent},
   {path : 'all-orders', component: OrderListComponent},
   {path : 'booking/completed', component: BookingCompleteComponent},
-  {path : 'booking/modal', component: BookingModalComponent}
+  {path : 'booking/modal', component: BookingModalComponent},
+  {path : '**', pathMatch: 'full', component: ErrorPageComponent},
+  
 ];
 
 @NgModule({
