@@ -61,9 +61,16 @@ export class ListButtonComponent implements OnInit,AfterViewInit{
     });
   }
 
-  onCancel(){ this.deleteBooking = false; }
+  onCancel(){ 
+    this.deleteBooking = false;
+    this.modalService.dismissAll();
+   }
 
-  onDelete(){ this.deleteBooking = true; }
+  onDelete(){ 
+    this.deleteBooking = true; 
+    this.onSubmit();
+    this.modalService.dismissAll();
+  }
 
   //Modal Form submission handler
   onSubmit(){

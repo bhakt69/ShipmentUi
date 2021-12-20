@@ -1,15 +1,15 @@
 <i id="iconcss"class="fa fa-trash"  (click)="onClick(content)"></i>
 
-<ng-template #content let-modal id="exampleModal" tabindex="-1" role="dialog">
+<ng-template #content let-modal id="exampleModal" tabindex="-1"  role="dialog">
       <div _ngcontent-faw-c116="" class="modal-content model-sm" style="width:50%;">
         <form _ngcontent-faw-c116="" novalidate="" _ngcontent-osa-c116="" class="modal-body  ng-untouched ng-pristine ng-valid">
           <div _ngcontent-faw-c116="" _ngcontent-osa-c116="" class="container">
             <h1 _ngcontent-faw-c116="" _ngcontent-osa-c116="">Delete Booking</h1>
             <p _ngcontent-faw-c116="" _ngcontent-osa-c116="">Are you sure you want to delete?</p>
             <div _ngcontent-faw-c116="" _ngcontent-osa-c116="" class="clearfix">
-              <button _ngcontent-faw-c116="" _ngcontent-osa-c116="" type="submit" class="btn-primary">Cancel</button>
+              <button _ngcontent-faw-c116="" (click)="onCancel()" _ngcontent-osa-c116="" type="submit" class="btn-primary">Cancel</button>
                &nbsp; &nbsp; 
-               <button _ngcontent-faw-c116="" _ngcontent-osa-c116="" type="submit" class="btn-danger">Delete</button>
+               <button _ngcontent-faw-c116="" (click)="onDelete()" _ngcontent-osa-c116="" type="submit" class="btn-danger">Delete</button>
               </div>
             </div>
           </form>
